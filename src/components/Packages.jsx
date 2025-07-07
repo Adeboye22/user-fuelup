@@ -54,8 +54,6 @@ const Packages = () => {
               <h3 className="text-2xl font-bold text-white mb-4">{pkg.title}</h3>
               <p className="text-gray-100 mb-8 min-h-20">{pkg.description}</p>
               <button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 onClick={toLogin}
                 className="bg-white text-green-700 font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors duration-300"
               >
