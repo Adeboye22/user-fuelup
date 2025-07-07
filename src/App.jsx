@@ -2,8 +2,8 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div>
-      <img src="/assets/Nozzle.jpg" alt="nozzle" />
+    <div className='bg-red-700 text-7xl font-bold'>
+      Hello World
     </div>
   )
 }
