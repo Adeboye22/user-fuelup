@@ -9,12 +9,10 @@ function App() {
 
   return (
       <Router>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <Routes>
+        <Routes>
             {/* Main routes with MainLayout - wrap with PublicRoute */}
             <Route index element={<Home />} />
           </Routes>
-        </ThemeProvider>
       </Router>
   );
 }
