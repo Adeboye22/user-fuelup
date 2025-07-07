@@ -1,26 +1,15 @@
 import React, { useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import Marquee from 'react-fast-marquee';
-import { TbTruckDelivery } from 'react-icons/tb';
+// import Marquee from 'react-fast-marquee';
+// import { TbTruckDelivery } from 'react-icons/tb';
 import Hero from '@/Components/Hero';
-import OurService from '@/Components/OurService';
-import Location from '@/Components/Location';
-import ContactSection from '@/Components/ContactSection';
-import AboutUs from '@/Components/AboutUs';
-import Packages from '@/Components/Packages';
+// import OurService from '@/Components/OurService';
+// import Location from '@/Components/Location';
+// import ContactSection from '@/Components/ContactSection';
+// import AboutUs from '@/Components/AboutUs';
+// import Packages from '@/Components/Packages';
 
 const Home = () => {
-  useEffect(() => {
-    // Scroll to top on page load
-    window.scrollTo(0, 0);
-  }, []);
-
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
     <div className="text-gray-100 font-sans">
       {/* Hero Section with fullscreen height */}
