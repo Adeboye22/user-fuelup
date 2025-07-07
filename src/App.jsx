@@ -14,15 +14,7 @@ function App() {
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           {/* Main routes with MainLayout - wrap with PublicRoute */}
           <Routes>
-            <Route element={
-              <Suspense>
-                <PublicRoute>
-                  <MainLayout />
-                </PublicRoute>
-              </Suspense>
-            }>
-              <Route index element={<Home />} />
-            </Route>
+            <Route index element={<Home />} />
           </Routes>
         </ThemeProvider>
       </Router>
