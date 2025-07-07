@@ -5,9 +5,6 @@ const App = () => {
     <div>
       <img src="/assets/Nozzle.jpg" alt="nozzle" />
     </div>
-    <>
-      <h1>Vite + React</h1>
-    </>
   )
 }
 
