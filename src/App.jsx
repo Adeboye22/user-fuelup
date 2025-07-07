@@ -6,7 +6,8 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="fuelup-ui-theme">
       <Router>
         <Routes>
-          <Route index element={<Home />} />
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </ThemeProvider>
