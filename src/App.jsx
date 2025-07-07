@@ -1,12 +1,12 @@
-import { lazy} from 'react';
+import React from 'react'
+import Home from './pages/Home'
 
-// Main pages
-const Home = lazy(() => import('./pages/Home'));
-
-function App() {  
+const App = () => {
   return (
-    <div>Hello world</div>
-  );
+    <div>
+      <Home />
+    </div>
+  )
 }
 
-export default App;
+export default App
