@@ -7,14 +7,9 @@ const Home = lazy(() => import('./pages/Home'));
 
 function App() {  
   return (
-      <Router>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          {/* Main routes with MainLayout - wrap with PublicRoute */}
-          <Routes>
-            <Route index element={<div>Hello world</div>} />
-          </Routes>
-        </ThemeProvider>
-      </Router>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div>Hello world</div>
+    </ThemeProvider>
   );
 }
 
