@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import Hero from '@/Components/Hero';
 
 const Home = () => {
   return (
