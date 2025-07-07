@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './components/theme-provider';
 import Home from './pages/Home';
-import PublicRoute from './routes/PublicRoute';
 import MainLayout from './layouts/MainLayout';
 function App() {  
   return (
@@ -12,9 +11,7 @@ function App() {
           {/* Main routes with MainLayout - wrap with PublicRoute */}
           <Route element={
             <Suspense>
-              <PublicRoute>
-                <MainLayout />
-              </PublicRoute>
+              <MainLayout />
             </Suspense>
           }>
             <Route index element={<Home />} />
