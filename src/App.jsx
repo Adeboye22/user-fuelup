@@ -6,7 +6,6 @@ import { ThemeProvider } from './components/theme-provider';
 const Home = lazy(() => import('./pages/Home'));
 
 function App() {  
-
   return (
       <Router>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
