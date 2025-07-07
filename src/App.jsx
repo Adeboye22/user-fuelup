@@ -1,18 +1,21 @@
-// import { lazy } from 'react'; -m 
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import { Toaster } from 'react-hot-toast';
-
-// import ScrollToTop from './Components/ScrollToTop';
-// import { ThemeProvider } from './components/theme-provider';
+import { lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './components/theme-provider';
 
 // Main pages
-// const Home = lazy(() => import('./pages/Home'));
+const Home = lazy(() => import('./pages/Home'));
 
 function App() {  
 
   return (
-    // <Home />
-    <div>Hello world</div>
+      <Router>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Routes>
+            {/* Main routes with MainLayout - wrap with PublicRoute */}
+            <Route index element={<Home />} />
+          </Routes>
+        </ThemeProvider>
+      </Router>
   );
 }
 

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
-import Marquee from 'react-fast-marquee';
+// import Marquee from 'react-fast-marquee';
 import { TbTruckDelivery } from 'react-icons/tb';
 import Hero from '@/Components/Hero';
 import OurService from '@/Components/OurService';
-import Location from '@/Components/Location';
 import ContactSection from '@/Components/ContactSection';
 import AboutUs from '@/Components/AboutUs';
 import Packages from '@/Components/Packages';
@@ -53,7 +52,15 @@ const Home = () => {
       {/* Announcement Bar */}
       <div className="bg-yellow-600/80 shadow-lg">
         <div className="container mx-auto py-3">
-          <Marquee
+          <div
+            className="text-white"
+          >
+            <p className="text-lg font-medium mx-4">You don't have to compromise your comfort just to get fuel. You order from the nearest filling station, we deliver!</p>
+            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
+            <p className="text-lg font-medium mx-4">Petrol (PMS) at N00.00, Diesel (AGO) at N00.00, Kerosene (DPK) at N00.00.</p>
+            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
+          </div>
+          {/* <Marquee
             speed={40}
             pauseOnHover={true}
             gradient={false}
@@ -63,7 +70,7 @@ const Home = () => {
             <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
             <p className="text-lg font-medium mx-4">Petrol (PMS) at N00.00, Diesel (AGO) at N00.00, Kerosene (DPK) at N00.00.</p>
             <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
-          </Marquee>
+          </Marquee> */}
         </div>
       </div>
 
@@ -214,9 +221,9 @@ const Home = () => {
         className=" bg-gray-900 border-t border-gray-800"
       >
         {/* Location Section */}
-        <section id="locations" className="container mx-auto px-4 py-16">
+        {/* <section id="locations" className="container mx-auto px-4 py-16">
           <Location />
-        </section>
+        </section> */}
       </motion.div>
 
       {/* Contact Section */}
