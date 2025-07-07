@@ -1,13 +1,6 @@
 import React, { useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-// import Marquee from 'react-fast-marquee';
-// import { TbTruckDelivery } from 'react-icons/tb';
 import Hero from '@/Components/Hero';
-// import OurService from '@/Components/OurService';
-// import Location from '@/Components/Location';
-// import ContactSection from '@/Components/ContactSection';
-// import AboutUs from '@/Components/AboutUs';
-// import Packages from '@/Components/Packages';
 
 const Home = () => {
   return (
