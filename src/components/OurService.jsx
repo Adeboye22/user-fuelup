@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaGasPump, FaClock, FaMobile, FaTruck, FaCheckCircle, FaHeadset } from 'react-icons/fa';
 
 const OurService = () => {
+  const navigate = useNavigate();
+
+  const handleServiceClick = () => {
+    navigate('/services');
+  };
+
   const services = [
     {
       icon: <FaGasPump size={24} />,
@@ -66,6 +73,7 @@ const OurService = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: service.delay }}
+            onClick={handleServiceClick}
           >
             <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-500 h-full transform group-hover:-translate-y-2 cursor-pointer backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-emerald-500 opacity-0 group-hover:opacity-5 rounded-full blur-xl transition-all duration-500"></div>

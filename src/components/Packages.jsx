@@ -1,9 +1,16 @@
 // Packages.jsx - Redesigned packages section
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaGasPump, FaRocket, FaTruck } from 'react-icons/fa';
 
 const Packages = () => {
+  const navigate = useNavigate();
+
+  const toLogin = () => {
+    navigate('/login');
+    window.scrollTo(0, 0);
+  };
 
   const packages = [
     {
@@ -59,6 +66,7 @@ const Packages = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={toLogin}
                 className="bg-white text-green-700 font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors duration-300"
               >
                 Purchase
