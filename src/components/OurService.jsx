@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { FaGasPump, FaClock, FaMobile, FaTruck, FaCheckCircle, FaHeadset } from 'react-icons/fa';
 
 const OurService = () => {
@@ -52,27 +51,18 @@ const OurService = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl overflow-hidden">
       <div className="max-w-6xl mx-auto mb-16 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">Our Premium <span className='text-yellow-500'>Features</span></h2>
           <div className="h-1 w-16 bg-emerald-500 mx-auto mb-8 rounded-full"></div>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg">Experience unparalleled fuel delivery services tailored to meet your specific needs with efficiency and reliability.</p>
-        </motion.div>
+        </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
         {services.map((service, index) => (
-          <motion.div
+          <div
             key={index}
             className="relative group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: service.delay }}
             onClick={handleServiceClick}
           >
             <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-500 h-full transform group-hover:-translate-y-2 cursor-pointer backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80">
@@ -94,7 +84,7 @@ const OurService = () => {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
