@@ -1,15 +1,21 @@
-import React from 'react'
-import { Button } from './components/ui/button'
+import { Suspense, lazy, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './components/theme-provider';
 
-const App = () => {
+// Main pages
+const Home = lazy(() => import('./pages/Home'));
+
+function App() {  
+
   return (
-    <div className='bg-red-700 text-7xl font-bold'>
-      Hello World and heres anothere change 
-
-      <Button>Click Button</Button>
-    </div>
-  )
+      <Router>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Routes>
+            <Route index element={<Home />} />
+          </Routes>
+        </ThemeProvider>
+      </Router>
+  );
 }
 
-export default App
- 
+export default App;
