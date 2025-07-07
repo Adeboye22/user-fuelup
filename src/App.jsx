@@ -1,11 +1,11 @@
-import Hero from "./components/Hero"
+import { ThemeProvider } from "./components/theme-provider"
 import Home from "./pages/Home"
 
 function App() {
   return (
-    <div>
-      <Hero />
-    </div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Home />
+    </ThemeProvider>
   )
 }
 
