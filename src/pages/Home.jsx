@@ -1,3 +1,4 @@
+import Hero from '@/components/Hero';
 import React, { useEffect } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
@@ -14,7 +15,7 @@ const Home = () => {
         
         {/* Content */}
         <div className="container mx-auto py-32 lg:py-28 px-4 relative z-10">
-          Hero
+          <Hero />
           
           {/* Scroll indicator */}
           <div 
