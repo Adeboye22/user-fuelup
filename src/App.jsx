@@ -1,10 +1,32 @@
-import React from 'react'
-import Home from './pages/Home'
+import { Suspense, lazy, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './components/theme-provider';
+import PublicRoute from './routes/PublicRoute';
+import MainLayout from './layouts/MainLayout';
 
-const App = () => {
+// Main pages
+const Home = lazy(() => import('./pages/Home'));
+
+function App() {  
+
   return (
-    <Home />
-  )
+      <Router>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          {/* Main routes with MainLayout - wrap with PublicRoute */}
+          <Routes>
+            <Route element={
+              <Suspense>
+                <PublicRoute>
+                  <MainLayout />
+                </PublicRoute>
+              </Suspense>
+            }>
+              <Route index element={<Home />} />
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </Router>
+  );
 }
 
-export default App
+export default App;
