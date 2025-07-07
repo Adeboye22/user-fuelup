@@ -1,10 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
-import { useTheme } from "./theme-provider"
 
 const AboutUs = () => {
-  const { theme } = useTheme()
-
   const benefits = [
     {
       icon: "⏱️",

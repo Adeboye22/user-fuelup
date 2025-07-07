@@ -1,6 +1,5 @@
 // Packages.jsx - Redesigned packages section
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaGasPump, FaRocket, FaTruck } from 'react-icons/fa';
 
