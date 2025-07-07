@@ -1,9 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaArrowRight } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+"use client"
+import { motion } from "framer-motion"
+import { FaArrowRight } from "react-icons/fa"
 
 const Hero = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <div className="max-w-5xl mx-auto text-white text-center flex flex-col items-center">
       <motion.div
@@ -16,50 +22,50 @@ const Hero = () => {
           Nigeria's First Fuel Dispatch Service
         </span>
       </motion.div>
-      
-      <motion.h1 
+
+      <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-4xl md:text-6xl font-bold leading-tight mb-6"
       >
         Efficient Fuel Delivery
-        <span className="block">at Your <span className="text-yellow-400">Doorstep</span></span>
+        <span className="block">
+          at Your <span className="text-yellow-400">Doorstep</span>
+        </span>
       </motion.h1>
-      
-      <motion.p 
+
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
         className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto"
       >
-        No more queues, no more waiting. We bring the fuel to you, 
+        No more queues, no more waiting. We bring the fuel to you,
         <span className="text-emerald-400 font-semibold"> anytime, anywhere</span>.
       </motion.p>
-      
-      <motion.div 
+
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
         className="flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center w-72 lg:w-full lg:max-w-xl"
       >
-        <Link to="/signup">
-          <div
-            className="px-8 py-4 w-full bg-emerald-600 text-white font-bold rounded-full shadow-lg hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center"
-          >
-            Get Started
-            <FaArrowRight className="ml-2" />
-          </div>
-        </Link>
-        <Link to="/signin">
-          <div
-            className="px-8 py-4 w-full bg-transparent text-white border-2 border-white font-bold rounded-full hover:bg-white/10 transition-colors duration-300"
-          >
-            Log In
-          </div>
-        </Link>
+        <button
+          onClick={scrollToContact}
+          className="px-8 py-4 w-full bg-emerald-600 text-white font-bold rounded-full shadow-lg hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center"
+        >
+          Get Started
+          <FaArrowRight className="ml-2" />
+        </button>
+        <a
+          href="#about"
+          className="px-8 py-4 w-full bg-transparent text-white border-2 border-white font-bold rounded-full hover:bg-white/10 transition-colors duration-300 text-center"
+        >
+          Learn More
+        </a>
       </motion.div>
-      
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -82,7 +88,7 @@ const Hero = () => {
         </div>
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

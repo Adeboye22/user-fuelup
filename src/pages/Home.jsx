@@ -1,45 +1,50 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaChevronDown } from 'react-icons/fa';
-// import Marquee from 'react-fast-marquee';
-import { TbTruckDelivery } from 'react-icons/tb';
-import Hero from '@/Components/Hero';
-import OurService from '@/Components/OurService';
-import ContactSection from '@/Components/ContactSection';
-import AboutUs from '@/Components/AboutUs';
-import Packages from '@/Components/Packages';
+"use client"
+
+import { useEffect } from "react"
+import { motion } from "framer-motion"
+import { FaChevronDown } from "react-icons/fa"
+import { TbTruckDelivery } from "react-icons/tb"
+import Hero from "@/Components/Hero"
+import OurService from "@/Components/OurService"
+import ContactSection from "@/Components/ContactSection"
+import AboutUs from "@/Components/AboutUs"
+import Packages from "@/Components/Packages"
+import Navbar from "@/Components/Navbar"
+import Footer from "@/Components/Footer"
 
 const Home = () => {
   useEffect(() => {
     // Scroll to top on page load
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+    visible: { opacity: 1, y: 0 },
+  }
 
   return (
     <div className="text-gray-100 font-sans">
+      <Navbar />
+
       {/* Hero Section with fullscreen height */}
       <section className="relative flex items-center justify-center overflow-hidden">
         {/* Background with overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/assets/Nozzle.jpg')] bg-cover bg-center bg-fixed"></div>
+          <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1200')] bg-cover bg-center bg-fixed"></div>
           <div className="absolute inset-0 bg-black/75"></div>
         </div>
-        
+
         {/* Content */}
         <div className="container mx-auto py-32 lg:py-28 px-4 relative z-10">
           <Hero />
-          
+
           {/* Scroll indicator */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 text-white"
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           >
             <a href="#services" className="flex flex-col items-center">
               <span className="text-sm font-light mb-2">Scroll Down</span>
@@ -52,32 +57,28 @@ const Home = () => {
       {/* Announcement Bar */}
       <div className="bg-yellow-600/80 shadow-lg">
         <div className="container mx-auto py-3">
-          <div
-            className="text-white"
-          >
-            <p className="text-lg font-medium mx-4">You don't have to compromise your comfort just to get fuel. You order from the nearest filling station, we deliver!</p>
-            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
-            <p className="text-lg font-medium mx-4">Petrol (PMS) at N00.00, Diesel (AGO) at N00.00, Kerosene (DPK) at N00.00.</p>
-            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
+          <div className="text-white">
+            <p className="text-lg font-medium mx-4">
+              You don't have to compromise your comfort just to get fuel. You order from the nearest filling station, we
+              deliver!
+            </p>
+            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4">
+              <TbTruckDelivery />
+            </span>
+            <p className="text-lg font-medium mx-4">
+              Petrol (PMS) at N00.00, Diesel (AGO) at N00.00, Kerosene (DPK) at N00.00.
+            </p>
+            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4">
+              <TbTruckDelivery />
+            </span>
           </div>
-          {/* <Marquee
-            speed={40}
-            pauseOnHover={true}
-            gradient={false}
-            className="text-white"
-          >
-            <p className="text-lg font-medium mx-4">You don't have to compromise your comfort just to get fuel. You order from the nearest filling station, we deliver!</p>
-            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
-            <p className="text-lg font-medium mx-4">Petrol (PMS) at N00.00, Diesel (AGO) at N00.00, Kerosene (DPK) at N00.00.</p>
-            <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4"><TbTruckDelivery /></span>
-          </Marquee> */}
         </div>
       </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4">
         {/* Services Section */}
-        <motion.section 
+        <motion.section
           id="services"
           initial="hidden"
           whileInView="visible"
@@ -90,7 +91,7 @@ const Home = () => {
         </motion.section>
 
         {/* About Section */}
-        <motion.section 
+        <motion.section
           id="about"
           initial="hidden"
           whileInView="visible"
@@ -103,7 +104,7 @@ const Home = () => {
         </motion.section>
 
         {/* Packages Section with custom background */}
-        <motion.section 
+        <motion.section
           id="packages"
           initial="hidden"
           whileInView="visible"
@@ -130,24 +131,26 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-green-500 mb-12 text-center">What Our Customers Say</h2>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
               {
                 quote: "FuelUp has transformed our business operations. No more fuel shortages or productivity losses!",
                 name: "Sarah Johnson",
-                title: "Operations Manager, Lagos Tech Hub"
+                title: "Operations Manager, Lagos Tech Hub",
               },
               {
-                quote: "The convenience of having fuel delivered to my doorstep has been a game-changer. Highly recommended!",
+                quote:
+                  "The convenience of having fuel delivered to my doorstep has been a game-changer. Highly recommended!",
                 name: "Michael Adebayo",
-                title: "Business Owner"
+                title: "Business Owner",
               },
               {
-                quote: "Reliable, professional, and always on time. FuelUp has become an essential service for our company.",
+                quote:
+                  "Reliable, professional, and always on time. FuelUp has become an essential service for our company.",
                 name: "Chioma Okafor",
-                title: "Hotel Manager"
-              }
+                title: "Hotel Manager",
+              },
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -181,23 +184,29 @@ const Home = () => {
         className="relative py-24"
       >
         {/* Background with overlay */}
-        <div className='absolute top-0 left-0 w-full h-full bg-green-700/50'>
-          <img src="/assets/Nozzle.jpg" className='absolute top-0 left-0 w-full h-full object-cover' alt="cta nozzle" />
-          <div className='absolute top-0 left-0 w-full h-full bg-green-700/50' />
+        <div className="absolute top-0 left-0 w-full h-full bg-green-700/50">
+          <img
+            src="/placeholder.svg?height=400&width=1200"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            alt="cta nozzle"
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-green-700/50" />
         </div>
         <div className="relative container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Experience Hassle-Free Fuel Delivery?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Experience Hassle-Free Fuel Delivery?
+          </h2>
           <p className="text-xl text-white opacity-90 mb-10 max-w-2xl mx-auto">
             Join thousands of satisfied customers who have made the switch to FuelUp.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mx-auto max-w-md">
             <motion.a
-              href="/signup"
+              href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 w-full bg-white text-green-700 font-bold rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300"
             >
-              Sign Up Now
+              Get Started
             </motion.a>
             <motion.a
               href="#about"
@@ -211,23 +220,8 @@ const Home = () => {
         </div>
       </motion.section>
 
-      {/* Location Section */}
-      <motion.div 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        variants={fadeInUp}
-        className=" bg-gray-900 border-t border-gray-800"
-      >
-        {/* Location Section */}
-        {/* <section id="locations" className="container mx-auto px-4 py-16">
-          <Location />
-        </section> */}
-      </motion.div>
-
       {/* Contact Section */}
-      <motion.div 
+      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -235,11 +229,12 @@ const Home = () => {
         variants={fadeInUp}
         className=""
       >
-        {/* Contact Section */}
         <ContactSection />
       </motion.div>
-    </div>
-  );
-};
 
-export default Home;
+      <Footer />
+    </div>
+  )
+}
+
+export default Home
