@@ -1,10 +1,10 @@
-import { Button } from "./components/ui/button"
+import Hero from "./components/Hero"
 import Home from "./pages/Home"
 
 function App() {
   return (
     <div>
-      <Button />
+      <Hero />
     </div>
   )
 }
