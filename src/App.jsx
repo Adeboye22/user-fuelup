@@ -6,6 +6,7 @@ import PublicRoute from './routes/PublicRoute';
 
 import { ThemeProvider } from './components/theme-provider';
 import ScrollToTop from './components/ScrollToTop';
+import { Toaster } from 'react-hot-toast';
 
 // Layouts
 const MainLayout = lazy(() => import('./layouts/MainLayout'));
@@ -18,6 +19,7 @@ function App() {
   return (
       <Router>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Toaster position="top-right" />
           <Routes>
             {/* Main routes with MainLayout - wrap with PublicRoute */}
             <Route element={
