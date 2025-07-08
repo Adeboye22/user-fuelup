@@ -1,14 +1,13 @@
 "use client"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { FaGasPump, FaMapMarkerAlt, FaInfoCircle, FaCheckCircle } from "react-icons/fa"
+import { Fuel, MapPin, Info, CheckCircle, Plus } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
 import useAuthStore from "@/stores/useAuthStore"
 import useAddressStore from "@/stores/useAddressStore"
 import useOrderStore from "@/stores/useOrderStore"
 import { toast } from "react-hot-toast"
 import apiService from "@/lib/api"
-import { Plus } from "lucide-react"
 import AddressModal from "@/components/dashboard/AddressModal"
 
 const OrderFuel = () => {
@@ -309,7 +308,7 @@ const OrderFuel = () => {
             <div className="text-center mb-8">
               <div className="flex justify-center mb-4">
                 <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg">
-                  <FaCheckCircle className="text-white text-3xl" />
+                  <CheckCircle className="text-white text-3xl" size={48} />
                 </div>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-green-600 mb-3">Order Created Successfully!</h2>
@@ -323,7 +322,7 @@ const OrderFuel = () => {
               {/* Card Header */}
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 px-4 md:px-6 py-4 border-b border-green-200 dark:border-green-700">
                 <h3 className="text-lg md:text-xl font-semibold text-green-700 dark:text-green-300 flex items-center">
-                  <FaInfoCircle className="mr-2 text-green-600" />
+                  <Info className="mr-2 text-green-600" />
                   Order Details
                 </h3>
               </div>
@@ -388,7 +387,7 @@ const OrderFuel = () => {
                   {/* Delivery Address */}
                   <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 md:p-4">
                     <h4 className="font-semibold text-sm md:text-base text-gray-800 dark:text-gray-200 mb-2 flex items-center">
-                      <FaMapMarkerAlt className="mr-2 text-blue-600" />
+                      <MapPin className="mr-2 text-blue-600" />
                       Delivery Address
                     </h4>
                     <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -419,7 +418,7 @@ const OrderFuel = () => {
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0">
                     <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
-                      <FaInfoCircle className="text-blue-600 text-lg" />
+                      <Info className="text-blue-600 text-lg" />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -539,7 +538,7 @@ const OrderFuel = () => {
                             }`}
                           >
                             <div className="flex items-center mb-2">
-                              <FaGasPump className="mr-2" />
+                              <Fuel className="mr-2" />
                               <span className="capitalize font-medium">{product.name}</span>
                             </div>
                             <div className="text-lg font-bold text-emerald-600">
@@ -649,7 +648,7 @@ const OrderFuel = () => {
                                   : styles.iconInactiveBg
                               }`}
                             >
-                              <FaMapMarkerAlt
+                              <MapPin
                                 className={selectedLocation === (location._id || location.id) ? "text-white" : ""}
                               />
                             </div>
@@ -739,7 +738,7 @@ const OrderFuel = () => {
 
                   {/* Info boxes */}
                   <div className={`p-4 ${styles.summaryBox} rounded-lg mb-6 flex items-start`}>
-                    <FaInfoCircle className="text-blue-500 mt-1 mr-3" />
+                    <Info className="text-blue-500 mt-1 mr-3" />
                     <div>
                       <p className={`text-sm ${isLightMode ? "text-gray-700" : "text-gray-300"} mb-2`}>
                         <strong>Payment Method:</strong> Paystack (Card, Bank Transfer, USSD)
@@ -751,7 +750,7 @@ const OrderFuel = () => {
                   </div>
 
                   <div className={`p-4 ${styles.summaryBox} rounded-lg mb-6 flex items-start`}>
-                    <FaInfoCircle className="text-blue-500 mt-1 mr-3" />
+                    <Info className="text-blue-500 mt-1 mr-3" />
                     <p className={`text-sm ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>
                       Delivery is available 7 days a week during standard hours (8AM-8PM). Delivery will be scheduled
                       within 24 hours of order confirmation.

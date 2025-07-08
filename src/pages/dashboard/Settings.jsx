@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { motion } from "framer-motion"
-import { User, Lock, Shield, Smartphone, Mail, Save, Home, Plus, Trash2, CreditCard } from "lucide-react"
+import { User, Lock, Shield, Smartphone, Mail, Save, Home, Plus, Trash2, CreditCard, Eye, EyeOff } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
@@ -15,7 +15,6 @@ import toast from "react-hot-toast"
 import useAuthStore from "@/stores/useAuthStore"
 import useAddressStore from "@/stores/useAddressStore"
 import apiService from "@/lib/api"
-import { Eye, SlashIcon as EyeSlash } from "lucide-react"
 
 export default function Settings() {
   const { user, updateProfile, changePassword } = useAuthStore()
@@ -602,7 +601,7 @@ export default function Settings() {
                             onClick={() => setPasswordVisible(!passwordVisible)}
                           >
                             {passwordVisible ? (
-                              <EyeSlash className="h-4 w-4 text-muted-foreground" />
+                              <EyeOff className="h-4 w-4 text-muted-foreground" />
                             ) : (
                               <Eye className="h-4 w-4 text-muted-foreground" />
                             )}
