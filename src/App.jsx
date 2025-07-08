@@ -7,6 +7,7 @@ import PublicRoute from './routes/PublicRoute';
 import { ThemeProvider } from './components/theme-provider';
 import ScrollToTop from './components/ScrollToTop';
 import { Toaster } from 'react-hot-toast';
+import SignIn from './pages/auth/SignIn';
 
 // Layouts
 const MainLayout = lazy(() => import('./layouts/MainLayout'));
@@ -21,6 +22,14 @@ function App() {
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <Toaster position="top-right" />
           <Routes>
+            {/* Auth routes without layout */}
+            <Route path="/signin" element={
+              <Suspense>
+                <PublicRoute>
+                  <SignIn />
+                </PublicRoute>
+              </Suspense>
+            } />
             {/* Main routes with MainLayout - wrap with PublicRoute */}
             <Route element={
               <Suspense>

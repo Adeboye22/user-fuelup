@@ -7,7 +7,7 @@ const Packages = () => {
   const navigate = useNavigate();
 
   const toLogin = () => {
-    navigate('/login');
+    navigate('/signin');
     window.scrollTo(0, 0);
   };
 
