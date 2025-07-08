@@ -10,6 +10,7 @@ import Marquee from "react-fast-marquee"
 import { FaChevronDown } from "react-icons/fa"
 import { motion } from "framer-motion"
 import Locations from "@/components/Locations"
+import ContactSection from "@/components/ContactSection"
 
 // Animation variants
 const fadeInUp = {
@@ -192,6 +193,8 @@ const Home = () => {
           <Locations />
         </div>
       </div>
+
+      <ContactSection />
     </div>
   )
 }
