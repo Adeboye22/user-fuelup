@@ -125,6 +125,7 @@ const SignIn = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                autoComplete='email'
                 className={`w-full bg-gray-900/60 border ${errors.email ? 'border-red-500' : 'border-gray-700'} pl-10 pr-4 py-3 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-white placeholder-gray-500 transition-all duration-300`}
                 placeholder="mail@example.com"
               />
@@ -153,6 +154,7 @@ const SignIn = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
+                autoComplete='current-password'
                 className={`w-full bg-gray-900/60 border ${errors.password ? 'border-red-500' : 'border-gray-700'} pl-10 pr-12 py-3 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-white placeholder-gray-500 transition-all duration-300`}
                 placeholder="••••••••"
               />
