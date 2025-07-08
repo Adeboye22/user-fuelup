@@ -1,5 +1,6 @@
 "use client"
 import { FaArrowRight } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -30,13 +31,13 @@ const Hero = () => {
       </p>
 
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center w-72 lg:w-full lg:max-w-xl">
-        <button
-          onClick={scrollToContact}
+        <Link
+          to="/signup"
           className="px-8 py-4 w-full bg-emerald-600 text-white font-bold rounded-full shadow-lg hover:bg-emerald-500 transition-colors duration-300 flex items-center justify-center"
         >
           Get Started
           <FaArrowRight className="ml-2" />
-        </button>
+        </Link>
         <a
           href="#about"
           className="px-8 py-4 w-full bg-transparent text-white border-2 border-white font-bold rounded-full hover:bg-white/10 transition-colors duration-300 text-center"
