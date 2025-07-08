@@ -6,6 +6,7 @@ import { ThemeProvider } from "./components/theme-provider"
 import ScrollToTop from "./components/ScrollToTop"
 import { Toaster } from "react-hot-toast"
 import SignIn from "./pages/auth/SignIn"
+import SignUp from "./pages/auth/SignUp"
 
 // Layouts
 const MainLayout = lazy(() => import("./layouts/MainLayout"))
@@ -27,6 +28,14 @@ function App() {
             element={
               <PublicRoute>
                 <SignIn />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <SignUp />
               </PublicRoute>
             }
           />
