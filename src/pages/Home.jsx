@@ -29,7 +29,7 @@ const Home = () => {
             className="absolute bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 text-white"
           >
             <a href="#services" className="flex flex-col items-center">
-              <span className="text-sm font-light mb-2">Scroll Down</span>
+              <span className="text-sm font-light mb-2">Scroll Dow</span>
               <FaChevronDown className="text-green-500" />
             </a>
           </div>
