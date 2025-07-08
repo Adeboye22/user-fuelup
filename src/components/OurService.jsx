@@ -65,7 +65,7 @@ const OurService = () => {
             className="relative group"
             onClick={handleServiceClick}
           >
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-500 h-full transform group-hover:-translate-y-2 cursor-pointer backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80">
+            <div className="bg-gray-100/80 dark:bg-gray-800 p-8 rounded-3xl shadow hover:shadow-xl transition-all duration-500 h-full transform group-hover:-translate-y-2 cursor-pointer backdrop-blur-sm">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-emerald-500 opacity-0 group-hover:opacity-5 rounded-full blur-xl transition-all duration-500"></div>
               
               <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-900 flex items-center justify-center mb-6 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 group-hover:shadow-emerald-200 dark:group-hover:shadow-emerald-900 group-hover:shadow-lg">

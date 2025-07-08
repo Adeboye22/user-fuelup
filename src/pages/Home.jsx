@@ -117,6 +117,8 @@ const Home = () => {
           </div>
         </motion.section>
       </div>
+
+      <div className="py-24 bg-gray-800/50">Testimonials</div>
     </div>
   )
 }
