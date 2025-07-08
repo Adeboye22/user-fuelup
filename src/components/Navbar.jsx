@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
-import { ModeToggle } from "./mode-toggle"
+// import { ModeToggle } from "./mode-toggle"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -140,7 +140,7 @@ const Navbar = () => {
                   </div>
 
                   <div>
-                    <ModeToggle />
+                    {/* <ModeToggle /> */}
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-6">
-            <ModeToggle />
+            {/* <ModeToggle /> */}
             <button
               ref={menuButtonRef}
               onClick={toggleMenu}
