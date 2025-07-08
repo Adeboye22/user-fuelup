@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PublicRoute from './routes/PublicRoute';
 
 import { ThemeProvider } from './components/theme-provider';
+import ScrollToTop from './components/ScrollToTop';
 
 // Layouts
 const MainLayout = lazy(() => import('./layouts/MainLayout'));
@@ -29,6 +30,7 @@ function App() {
               <Route index element={<Home />} />
             </Route>
           </Routes>
+          <ScrollToTop />
         </ThemeProvider>
       </Router>
   );
