@@ -185,6 +185,12 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <div className="bg-gray-900 border-t border-gray-800">
+        <div id="locations" className="container mx-auto px-4 py-16">
+            Locations
+        </div>
+      </div>
     </div>
   )
 }
