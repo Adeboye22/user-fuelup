@@ -5,9 +5,7 @@ const ContactSection = () => {
     <section className="py-16 relative bg-gray-100 dark:bg-gray-900">
         {/* Background with overlay */}
         <div className='absolute top-0 left-0 w-full h-full'>
-          {/* <img src="/assets/map.jpg" className='absolute top-0 left-0 w-full h-full object-cover' alt="cta nozzle" />
-          <div className='absolute top-0 left-0 w-full h-full bg-gray-100/30 dark:bg-gray-900/70' /> */}
-          <img src="/assets/map.jpg" className='absolute top-0 left-0 w-full h-full object-cover' alt="map" />
+          <img src="/assets/map.jpg" className='w-full h-full object-cover' alt="map" />
           <div className='absolute top-0 left-0 w-full h-full bg-gray-100/30 dark:bg-gray-900/70' />
         </div>
         <div className="max-w-5xl mx-auto px-6 relative">
