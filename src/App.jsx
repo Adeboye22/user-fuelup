@@ -1,20 +1,40 @@
+import { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './components/theme-provider';
-import Home from './pages/Home';
-import MainLayout from './layouts/MainLayout';
-function App() {  
-  return (
-    <ThemeProvider defaultTheme="dark" storageKey="fuelup-ui-theme">
-      <Router>
-        <Routes>
-          {/* Public Routes with MainLayout */}
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<Home />} />
-          </Route>
+import { Toaster } from 'react-hot-toast';
 
-        </Routes>
+// Routes
+import PublicRoute from './routes/PublicRoute';
+
+import ScrollToTop from './Components/ScrollToTop';
+import { ThemeProvider } from './components/theme-provider';
+
+// Layouts
+const MainLayout = lazy(() => import('./layouts/MainLayout'));
+
+// Main pages
+const Home = lazy(() => import('./pages/Home'));
+
+function App() {  
+
+  return (
+      <Router>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Toaster position="top-right" />
+          <Routes>
+            {/* Main routes with MainLayout - wrap with PublicRoute */}
+            <Route element={
+              <Suspense>
+                <PublicRoute>
+                  <MainLayout />
+                </PublicRoute>
+              </Suspense>
+            }>
+              <Route index element={<Home />} />
+            </Route>
+          </Routes>
+          <ScrollToTop />
+        </ThemeProvider>
       </Router>
-    </ThemeProvider>
   );
 }
 
