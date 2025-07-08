@@ -1,15 +1,21 @@
-import { Navigate, useLocation } from "react-router-dom";
-import { Suspense } from "react";
-import useAuthStore from "@/stores/useAuthStore";
+import { Navigate, useLocation } from "react-router-dom"
+import { Suspense } from "react"
+import useAuthStore from "@/stores/useAuthStore"
 
 const ProtectedRoute = ({ children }) => {
-  const location = useLocation();
-  const { authenticated, loading } = useAuthStore();
-  if (!authenticated) {
-    return <Navigate to="/signin" state={{ from: location }} replace />;
+  const location = useLocation()
+  const { authenticated, loading } = useAuthStore()
+
+  // Show loading spinner while checking authentication
+  if (loading) {
+    return <div>Loading...</div> 
   }
 
-  return <Suspense>{children}</Suspense>;
-};
+  if (!authenticated) {
+    return <Navigate to="/signin" state={{ from: location }} replace />
+  }
 
-export default ProtectedRoute;
+  return <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+}
+
+export default ProtectedRoute
