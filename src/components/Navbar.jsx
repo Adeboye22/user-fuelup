@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
 import { ModeToggle } from "./mode-toggle"
-import FuelupLogo from "./FuelupLogo"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -101,7 +100,7 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <button onClick={scrollToTop}>
-                <FuelupLogo />
+                <img src="/icons/Logo.png" className='h-14' alt="fuel logo" />
               </button>
             </div>
 

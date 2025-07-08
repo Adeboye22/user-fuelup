@@ -2,12 +2,12 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '@/components/Footer';
-// import Navbar from '@/components/navbar';
+import Navbar from '@/components/navbar';
 
 const MainLayout = () => {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <main>
         <Suspense>
           <Outlet />
