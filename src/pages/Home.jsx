@@ -161,6 +161,30 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <div className="relative py-24">
+        {/* Background with overlay */}
+        <div className='absolute top-0 left-0 w-full h-full bg-green-700/50'>
+          <img src="/assets/Nozzle.jpg" className='absolute top-0 left-0 w-full h-full object-cover' alt="cta nozzle" />
+          <div className='absolute top-0 left-0 w-full h-full bg-green-700/50' />
+        </div>
+
+        <div className="relative container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Experience Hassle-Free Fuel Delivery?</h2>
+          <p className="text-xl text-white opacity-90 mb-10 max-w-2xl mx-auto">
+            Join thousands of satisfied customers who have made the switch to FuelUp.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mx-auto max-w-md">
+            <a href="/signup" className="px-8 py-4 w-full bg-white text-green-700 font-bold rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300">
+              Sign Up Now
+            </a>
+            <a href="#about" className="w-full px-8 py-4 bg-transparent text-white border-2 border-white font-bold rounded-full hover:bg-white/10 transition-colors duration-300">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
