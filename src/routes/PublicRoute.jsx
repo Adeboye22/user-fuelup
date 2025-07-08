@@ -13,7 +13,7 @@ const PublicRoute = ({ children }) => {
 
   // If user is authenticated and trying to access auth pages, redirect to dashboard
   if (authenticated) {
-    return <Navigate to="/dashboard" state={{ from: location }} replace />
+    return <Navigate to="/" state={{ from: location }} replace />
   }
 
   return <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
