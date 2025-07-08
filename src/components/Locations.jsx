@@ -1,7 +1,7 @@
 // Location.jsx - Redesigned location section
 import React from 'react';
-import { FaMapMarkerAlt, FaTruck } from 'react-icons/fa';
 import Marquee from 'react-fast-marquee';
+import { FaMapMarkerAlt, FaTruck } from 'react-icons/fa';
 
 const Location = () => {
   const locations = [
@@ -11,8 +11,7 @@ const Location = () => {
 
   return (
     <div className="space-y-12">
-      <div className="text-center"
-      >
+      <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-green-500 mb-8">Service Locations</h2>
       </div>
       
