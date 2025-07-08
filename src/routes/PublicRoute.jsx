@@ -1,18 +1,22 @@
-import { Navigate, useLocation } from 'react-router-dom';
-import { Suspense } from 'react';
-import useAuthStore from '@/stores/useAuthStore';
+import { Navigate, useLocation } from "react-router-dom"
+import { Suspense } from "react"
+import useAuthStore from "@/stores/useAuthStore"
 
 const PublicRoute = ({ children }) => {
-  const location = useLocation();
-  const { authenticated, loading } = useAuthStore();
+  const location = useLocation()
+  const { authenticated, loading } = useAuthStore()
 
-
-  if (!authenticated) {
-    return <Navigate to="/dashboard" state={{ from: location }} replace />;
+  // Show loading spinner while checking authentication
+  if (loading) {
+    return <div>Loading...</div> // Replace with your loading component
   }
 
-  return <Suspense>{children}</Suspense>;
-};
+  // If user is authenticated and trying to access auth pages, redirect to dashboard
+  if (authenticated) {
+    return <Navigate to="/dashboard" state={{ from: location }} replace />
+  }
 
+  return <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+}
 
-export default PublicRoute;
+export default PublicRoute

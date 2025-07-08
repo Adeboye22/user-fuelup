@@ -142,7 +142,7 @@ const SignIn = () => {
               <Link to="/forgot-password" className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors">
                 Forgot Password?
               </Link>
-            </div>
+            </div> 
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <FaLock className="text-gray-500" />
