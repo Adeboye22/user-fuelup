@@ -9,6 +9,7 @@ import { useEffect } from "react"
 import Marquee from "react-fast-marquee"
 import { FaChevronDown } from "react-icons/fa"
 import { motion } from "framer-motion"
+import Locations from "@/components/Locations"
 
 // Animation variants
 const fadeInUp = {
@@ -188,7 +189,7 @@ const Home = () => {
 
       <div className="bg-gray-900 border-t border-gray-800">
         <div id="locations" className="container mx-auto px-4 py-16">
-            Locations
+          <Locations />
         </div>
       </div>
     </div>
