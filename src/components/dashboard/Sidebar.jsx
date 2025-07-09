@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
-import { Fuel, History, Bell, Settings, Truck, X } from "lucide-react"
+import { Fuel, History, Bell, Settings, Truck, X, MessageSquare } from "lucide-react"
 
 const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
   return (
@@ -30,7 +30,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
       >
         <div className="flex justify-between items-center mb-6 px-4">
           <Link to="/" className="inline-block" onClick={toggleSidebar}>
-            <img src="/icons/Logo.png" className='h-14' alt="fuel logo" />
+            <img src="/icons/Logo.png" className="h-14" alt="fuel logo" />
           </Link>
           <button
             onClick={toggleSidebar}
@@ -55,7 +55,7 @@ const SidebarContent = ({ toggleSidebar }) => {
     <>
       <div className="mb-10 px-4 md:block hidden">
         <Link to="/" className="inline-block">
-          <img src="/icons/Logo.png" className='h-14' alt="fuel logo" />
+          <img src="/icons/Logo.png" className="h-14" alt="fuel logo" />
         </Link>
       </div>
 
@@ -80,6 +80,13 @@ const SidebarContent = ({ toggleSidebar }) => {
             icon={<History size={18} />}
             label="Order History"
             active={currentPath === "/dashboard/order-history"}
+            toggleSidebar={toggleSidebar}
+          />
+          <SidebarItem
+            to="/dashboard/support"
+            icon={<MessageSquare size={18} />}
+            label="Support"
+            active={currentPath.startsWith("/dashboard/support")}
             toggleSidebar={toggleSidebar}
           />
           <SidebarItem
@@ -136,7 +143,8 @@ const SupportBox = ({ toggleSidebar }) => {
     if (toggleSidebar) {
       toggleSidebar()
     }
-    // Add any additional support functionality here
+    // Navigate to support page
+    window.location.href = "/dashboard/support/create"
   }
 
   return (

@@ -6,7 +6,7 @@ const OurService = () => {
   const navigate = useNavigate();
 
   const handleServiceClick = () => {
-    navigate('/services');
+    navigate('/signin');
   };
 
   const services = [
