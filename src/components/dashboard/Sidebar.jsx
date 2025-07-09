@@ -26,7 +26,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
         initial={{ x: "-100%" }}
         animate={{ x: isSidebarOpen ? 0 : "-100%" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="md:hidden flex w-96 flex-col bg-white/95 dark:bg-gray-800/90 backdrop-blur-md h-screen fixed border-r border-gray-200 dark:border-gray-700/50 py-8 px-4 z-40"
+        className="md:hidden flex w-full flex-col bg-white/95 dark:bg-gray-800/90 backdrop-blur-md h-screen fixed border-r border-gray-200 dark:border-gray-700/50 py-8 px-4 z-40"
       >
         <div className="flex justify-between items-center mb-6 px-4">
           <Link to="/" className="inline-block" onClick={toggleSidebar}>

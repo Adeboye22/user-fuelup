@@ -16,7 +16,7 @@ const DashboardLayout = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black text-gray-800 dark:text-white">
       <SessionTimeoutWarning />
-      <div className="flex">
+      <div className="md:flex w-full">
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <div className="flex-1 md:ml-64">
           <div className="p-4 lg:p-6">
