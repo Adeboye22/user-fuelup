@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, PhoneCall, Linkedin } from "lucide-react"
+import { FaTiktok } from "react-icons/fa"
 
 const ContactSection = () => {
   return (
@@ -97,6 +98,30 @@ const ContactSection = () => {
                   aria-label="Follow us on Instagram"
                 >
                   <Instagram className="w-6 h-6" />
+                </a>
+
+                <a
+                  href="#"
+                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  aria-label="Follow us on Instagram"
+                >
+                  <Linkedin className="w-6 h-6" />
+                </a>
+
+                <a
+                  href="#"
+                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  aria-label="Follow us on Instagram"
+                >
+                  <PhoneCall className="w-6 h-6" />
+                </a>
+
+                <a
+                  href="#"
+                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  aria-label="Follow us on Instagram"
+                >
+                  <FaTiktok className="w-6 h-6" />
                 </a>
               </div>
             </div>

@@ -5,8 +5,19 @@ import { Calendar } from "lucide-react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { useTheme } from "@/components/theme-provider"
 
 const RecentOrders = ({ orders, loading, error }) => {
+  const { theme } = useTheme()
+  const isLightMode = theme === "light"
+
+  // Theme-specific styles matching support ticket pages
+  const styles = {
+    cardContainer: isLightMode
+      ? "bg-white backdrop-blur-md border border-gray-300 shadow-lg"
+      : "bg-gray-800/40 backdrop-blur-md border border-gray-700/50 shadow-lg",
+  }
+
   // Format date for display
   const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -24,7 +35,7 @@ const RecentOrders = ({ orders, loading, error }) => {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="lg:col-span-2"
     >
-      <Card className="border-gray-200 dark:border-gray-700/50 shadow-sm backdrop-blur-md">
+      <Card className={styles.cardContainer}>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle className="text-xl font-bold text-gray-800 dark:text-white">Recent Orders</CardTitle>
           <Link
@@ -37,7 +48,7 @@ const RecentOrders = ({ orders, loading, error }) => {
         <CardContent>
           {loading ? (
             <div className="flex justify-center items-center py-12">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-800 dark:border-white"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
             </div>
           ) : error ? (
             <div className="text-center py-6 text-red-500">{error}</div>
@@ -60,7 +71,7 @@ const RecentOrders = ({ orders, loading, error }) => {
                     orders.map((order) => <OrderRow key={order._id} order={order} formatDate={formatDate} />)
                   ) : (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center py-6 text-gray-500">
+                      <TableCell colSpan={5} className="text-center py-6 text-gray-500 dark:text-gray-400">
                         No recent orders
                       </TableCell>
                     </TableRow>

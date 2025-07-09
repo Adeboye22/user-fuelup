@@ -168,7 +168,7 @@ const Home = () => {
         {/* Background with overlay */}
         <div className='absolute top-0 left-0 w-full h-full bg-green-700/50'>
           <img src="/assets/Nozzle.jpg" className='absolute top-0 left-0 w-full h-full object-cover' alt="cta nozzle" />
-          <div className='absolute top-0 left-0 w-full h-full bg-green-700/50' />
+          <div className='absolute top-0 left-0 w-full h-full bg-green-700/65' />
         </div>
 
         <div className="relative container mx-auto px-4 text-center">

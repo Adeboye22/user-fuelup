@@ -19,6 +19,11 @@ import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage"
 import VerifyEmailPage from "./pages/auth/VerifyEmailPage"
 import ResetPasswordPage from "./pages/auth/ResetPasswordPage"
 
+// Support Components
+import SupportDashboard from "./pages/dashboard/support/SupportDashboard"
+import CreateTicket from "./pages/dashboard/support/CreateTicket"
+import TicketDetail from "./pages/dashboard/support/TicketDetail"
+
 // Layouts
 const MainLayout = lazy(() => import("./layouts/MainLayout"))
 const DashboardLayout = lazy(() => import("./layouts/DashboardLayout"))
@@ -112,6 +117,11 @@ function App() {
               <Route path="order-history" element={<OrderHistory />} />
               <Route path="notifications" element={<NotificationsPage />} />
               <Route path="settings" element={<Settings />} />
+
+              {/* Support Routes */}
+              <Route path="support" element={<SupportDashboard />} />
+              <Route path="support/create" element={<CreateTicket />} />
+              <Route path="support/ticket/:ticketId" element={<TicketDetail />} />
             </Route>
 
             {/* Catch all route - redirect based on auth status */}
