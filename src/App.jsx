@@ -1,10 +1,14 @@
-import { Suspense, lazy } from "react"
+"use client"
+
+import { Suspense, lazy, useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import PublicRoute from "./routes/PublicRoute"
 import ProtectedRoute from "./routes/ProtectedRoute"
+import AuthGuard from "./components/AuthGuard"
 import { ThemeProvider } from "./components/theme-provider"
 import ScrollToTop from "./components/ScrollToTop"
 import { Toaster } from "react-hot-toast"
+import useAuthStore from "./stores/useAuthStore"
 import SignIn from "./pages/auth/SignIn"
 import SignUp from "./pages/auth/SignUp"
 import OrderFuel from "./pages/dashboard/OrderFuel"
@@ -24,81 +28,110 @@ const Home = lazy(() => import("./pages/Home"))
 const DashboardHome = lazy(() => import("./pages/dashboard/DashboardHome"))
 
 function App() {
+  const { checkAuth, authenticated } = useAuthStore()
+
+  useEffect(() => {
+    // Check authentication status on app load
+    checkAuth()
+  }, [checkAuth])
+
   return (
     <Router>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Toaster position="top-right" />
-        <Routes>
-          {/* Public routes */}
-          <Route
-            path="/signin"
-            element={
-              <PublicRoute>
-                <SignIn />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute>
-                <SignUp />
-              </PublicRoute>
-            }
-          />
-          <Route path="/forgot-password" element={
-            <Suspense>
-              <PublicRoute>
-                <ForgotPasswordPage />
-              </PublicRoute>
-            </Suspense>
-          } />
-          <Route path="/verify-email" element={
-            <Suspense>
-              <PublicRoute>
-                <VerifyEmailPage />
-              </PublicRoute>
-            </Suspense>
-          } />
-          <Route path="/reset-password" element={
-            <Suspense>
-              <PublicRoute>
-                <ResetPasswordPage />
-              </PublicRoute>
-            </Suspense>
-          } />
+        <AuthGuard>
+          <Toaster position="top-right" />
+          <Routes>
+            {/* Public routes - Auth pages */}
+            <Route
+              path="/signin"
+              element={
+                <PublicRoute>
+                  <SignIn />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <PublicRoute>
+                  <SignUp />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/forgot-password"
+              element={
+                <PublicRoute>
+                  <ForgotPasswordPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/verify-email"
+              element={
+                <PublicRoute>
+                  <VerifyEmailPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/reset-password"
+              element={
+                <PublicRoute>
+                  <ResetPasswordPage />
+                </PublicRoute>
+              }
+            />
 
-          {/* Public routes with MainLayout */}
-          <Route
-            element={
-              <Suspense>
-                <MainLayout />
-              </Suspense>
-            }
-          >
-            <Route index element={<Home />} />
-            {/* Add other public pages here */}
-          </Route>
+            {/* Public routes with MainLayout - Only accessible when not authenticated */}
+            {!authenticated && (
+              <Route
+                element={
+                  <Suspense>
+                    <MainLayout />
+                  </Suspense>
+                }
+              >
+                <Route index element={<Home />} />
+              </Route>
+            )}
 
-          {/* Protected routes with DashboardLayout */}
-          <Route
-            path="/dashboard"
-            element={
-              <Suspense>
-                <ProtectedRoute>
-                  <DashboardLayout />
-                </ProtectedRoute>
-              </Suspense>
-            }
-          >
-            <Route index element={<DashboardHome />} />
-            <Route path="order-fuel" element={<OrderFuel />} />
-            <Route path="order-history" element={<OrderHistory />} />
-            <Route path="notifications" element={<NotificationsPage />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
-        </Routes>
-        <ScrollToTop />
+            {/* Protected routes with DashboardLayout */}
+            <Route
+              path="/dashboard"
+              element={
+                <Suspense>
+                  <ProtectedRoute>
+                    <DashboardLayout />
+                  </ProtectedRoute>
+                </Suspense>
+              }
+            >
+              <Route index element={<DashboardHome />} />
+              <Route path="order-fuel" element={<OrderFuel />} />
+              <Route path="order-history" element={<OrderHistory />} />
+              <Route path="notifications" element={<NotificationsPage />} />
+              <Route path="settings" element={<Settings />} />
+            </Route>
+
+            {/* Catch all route - redirect based on auth status */}
+            <Route
+              path="*"
+              element={
+                authenticated ? (
+                  <ProtectedRoute>
+                    <DashboardHome />
+                  </ProtectedRoute>
+                ) : (
+                  <PublicRoute>
+                    <Home />
+                  </PublicRoute>
+                )
+              }
+            />
+          </Routes>
+          <ScrollToTop />
+        </AuthGuard>
       </ThemeProvider>
     </Router>
   )
