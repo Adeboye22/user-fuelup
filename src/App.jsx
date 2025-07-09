@@ -7,6 +7,10 @@ import ScrollToTop from "./components/ScrollToTop"
 import { Toaster } from "react-hot-toast"
 import SignIn from "./pages/auth/SignIn"
 import SignUp from "./pages/auth/SignUp"
+import OrderFuel from "./pages/dashboard/OrderFuel"
+import OrderHistory from "./pages/dashboard/OrderHistory"
+import NotificationsPage from "./pages/dashboard/NotificationsPage"
+import Settings from "./pages/dashboard/Settings"
 
 // Layouts
 const MainLayout = lazy(() => import("./layouts/MainLayout"))
@@ -64,7 +68,10 @@ function App() {
             }
           >
             <Route index element={<DashboardHome />} />
-            {/* Add other dashboard routes here */}
+            <Route path="order-fuel" element={<OrderFuel />} />
+            <Route path="order-history" element={<OrderHistory />} />
+            <Route path="notifications" element={<NotificationsPage />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
         <ScrollToTop />

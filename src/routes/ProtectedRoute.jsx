@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom"
 import { Suspense } from "react"
 import useAuthStore from "@/stores/useAuthStore"
+import LoadingSpinner from "@/components/LoadingSpinner"
 
 const ProtectedRoute = ({ children }) => {
   const location = useLocation()
@@ -8,14 +9,14 @@ const ProtectedRoute = ({ children }) => {
 
   // Show loading spinner while checking authentication
   if (loading) {
-    return <div>Loading...</div> 
+    return <LoadingSpinner />
   }
 
   if (!authenticated) {
     return <Navigate to="/signin" state={{ from: location }} replace />
   }
 
-  return <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+  return <Suspense fallback={<LoadingSpinner />}>{children}</Suspense>
 }
 
 export default ProtectedRoute
