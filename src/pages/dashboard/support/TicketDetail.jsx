@@ -160,7 +160,7 @@ const TicketDetail = () => {
       <Card className={styles.cardContainer}>
         <CardContent className="p-8 text-center">
           <X className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
+          <p className="text-red-600 dark:text-red-400 mb-4 break-words">{error}</p>
           <Link to="/dashboard/support">
             <Button variant="outline">Back to Tickets</Button>
           </Link>
