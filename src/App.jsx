@@ -11,6 +11,9 @@ import OrderFuel from "./pages/dashboard/OrderFuel"
 import OrderHistory from "./pages/dashboard/OrderHistory"
 import NotificationsPage from "./pages/dashboard/NotificationsPage"
 import Settings from "./pages/dashboard/Settings"
+import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage"
+import VerifyEmailPage from "./pages/auth/VerifyEmailPage"
+import ResetPasswordPage from "./pages/auth/ResetPasswordPage"
 
 // Layouts
 const MainLayout = lazy(() => import("./layouts/MainLayout"))
@@ -43,6 +46,27 @@ function App() {
               </PublicRoute>
             }
           />
+          <Route path="/forgot-password" element={
+            <Suspense>
+              <PublicRoute>
+                <ForgotPasswordPage />
+              </PublicRoute>
+            </Suspense>
+          } />
+          <Route path="/verify-email" element={
+            <Suspense>
+              <PublicRoute>
+                <VerifyEmailPage />
+              </PublicRoute>
+            </Suspense>
+          } />
+          <Route path="/reset-password" element={
+            <Suspense>
+              <PublicRoute>
+                <ResetPasswordPage />
+              </PublicRoute>
+            </Suspense>
+          } />
 
           {/* Public routes with MainLayout */}
           <Route
