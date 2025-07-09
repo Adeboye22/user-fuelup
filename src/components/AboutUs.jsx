@@ -171,7 +171,7 @@ const AboutUs = () => {
 
       {/* Benefits Section - Horizontal Cards */}
       <motion.div
-        className="px-4 mb-20 bg-gray-100 dark:bg-gray-900 py-24"
+        className="px-4 mb-20 rounded-xl bg-gray-200/90 dark:bg-gray-900 py-24"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

@@ -23,6 +23,7 @@ import ResetPasswordPage from "./pages/auth/ResetPasswordPage"
 import SupportDashboard from "./pages/dashboard/support/SupportDashboard"
 import CreateTicket from "./pages/dashboard/support/CreateTicket"
 import TicketDetail from "./pages/dashboard/support/TicketDetail"
+import LoadingSpinner from "./components/LoadingSpinner"
 
 // Layouts
 const MainLayout = lazy(() => import("./layouts/MainLayout"))
@@ -92,7 +93,7 @@ function App() {
             {!authenticated && (
               <Route
                 element={
-                  <Suspense>
+                  <Suspense fallback={<LoadingSpinner />}>
                     <MainLayout />
                   </Suspense>
                 }

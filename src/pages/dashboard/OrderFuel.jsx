@@ -83,7 +83,8 @@ const OrderFuel = () => {
 
   // Calculate delivery fee (in kobo)
   const calculateDeliveryFee = () => {
-    return 50000 // 500 NGN
+    // return 50000 // 500 NGN
+    return 0
   }
 
   // Calculate service fee (in kobo) - 2% of fuel cost with minimum of 100 NGN
@@ -343,8 +344,8 @@ const OrderFuel = () => {
               </div>
 
               {/* Order Details Card */}
-              <Card className={`${styles.successBox} rounded-xl mb-6 border overflow-hidden`}>
-                <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border-b border-green-200 dark:border-green-700">
+              <Card className={`${styles.successBox} p-0 rounded-xl mb-6 border overflow-hidden`}>
+                <CardHeader className="pt-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border-b border-green-200 dark:border-green-700">
                   <CardTitle className="text-lg md:text-xl font-semibold text-green-700 dark:text-green-300 flex items-center">
                     <Info className="mr-2 text-green-600" />
                     Order Details
