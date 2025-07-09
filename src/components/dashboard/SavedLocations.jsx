@@ -51,7 +51,7 @@ const SavedLocations = ({ addresses = [] }) => {
           <span>Add</span>
         </Button>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-4">
         {addresses && addresses.length > 0 ? (
           <ul className="space-y-3">
             {addresses.map((address, index) => (

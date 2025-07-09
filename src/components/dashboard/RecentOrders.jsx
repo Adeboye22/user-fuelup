@@ -35,7 +35,7 @@ const RecentOrders = ({ orders, loading, error }) => {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="lg:col-span-2"
     >
-      <Card className={styles.cardContainer}>
+      <Card className={`${styles.cardContainer}`}>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle className="text-xl font-bold text-gray-800 dark:text-white">Recent Orders</CardTitle>
           <Link
@@ -45,7 +45,7 @@ const RecentOrders = ({ orders, loading, error }) => {
             View All
           </Link>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-4">
           {loading ? (
             <div className="flex justify-center items-center py-12">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>

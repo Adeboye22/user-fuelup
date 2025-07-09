@@ -283,11 +283,11 @@ export default function Settings() {
           <div className="flex-1">
             <TabsContent value="profile" className="m-0">
               <Card>
-                <CardHeader>
+                <CardHeader className="px-4">
                   <CardTitle>Personal Information</CardTitle>
                   <CardDescription>Update your profile details and personal information</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-6 px-4">
                   <div className="flex items-center gap-4">
                     <Avatar className="w-16 h-16 border-2 border-background">
                       <AvatarFallback className="bg-emerald-600 text-white text-xl">{getInitials()}</AvatarFallback>
@@ -508,7 +508,7 @@ export default function Settings() {
                   <CardDescription>Your payment is processed securely through Paystack</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="flex items-center justify-between p-6 rounded-lg border bg-gradient-to-r from-emerald-50 to-blue-50 border-emerald-200">
+                  <div className="flex items-center justify-between p-4 rounded-lg border bg-gradient-to-r from-emerald-50 to-blue-50 border-emerald-200">
                     <div className="flex items-center gap-4">
                       <div className="p-3 rounded-full bg-emerald-100">
                         <CreditCard className="h-6 w-6 text-emerald-600" />

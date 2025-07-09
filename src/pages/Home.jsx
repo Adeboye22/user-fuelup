@@ -144,7 +144,7 @@ const Home = () => {
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700"
+                className="bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-700"
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
               >

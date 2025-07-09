@@ -330,7 +330,7 @@ const TicketDetail = () => {
 
       {ticket?.status !== "OPEN" && (
         <Card className={styles.cardContainer}>
-          <CardContent className="p-6 text-center">
+          <CardContent className="p-4 text-center">
             <Clock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
             <p className="text-gray-600 dark:text-gray-400">
               This ticket is {ticket.status.toLowerCase()}. You cannot add new replies.
