@@ -58,7 +58,7 @@ const useOrderStore = create((set, get) => ({
           currentOrder: response.data,
           loading: false
         });
-        toast.success('Order created successfully');
+        // toast.success('Order created successfully');
       } else {
         throw new Error(response.message || 'Order creation failed');
       }

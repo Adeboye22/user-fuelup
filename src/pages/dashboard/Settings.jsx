@@ -15,8 +15,12 @@ import toast from "react-hot-toast"
 import useAuthStore from "@/stores/useAuthStore"
 import useAddressStore from "@/stores/useAddressStore"
 import apiService from "@/lib/api"
+import { useTheme } from "@/components/theme-provider"
 
 export default function Settings() {
+  const { theme } = useTheme()
+  const isLightMode = theme === "light"
+
   const { user, updateProfile, changePassword } = useAuthStore()
   const {
     addresses,
@@ -49,6 +53,24 @@ export default function Settings() {
     notifyPromotions: false,
     notifyPriceChanges: true,
   })
+
+  // Consistent theme styles matching support ticket pages
+  const styles = {
+    cardContainer: isLightMode
+      ? "bg-white backdrop-blur-md border border-gray-300 shadow-lg"
+      : "bg-gray-800/40 backdrop-blur-md border border-gray-700/50 shadow-lg",
+    tabsList: isLightMode ? "bg-gray-100/50" : "bg-gray-800/50",
+    tabsTrigger: isLightMode
+      ? "data-[state=active]:bg-white data-[state=active]:text-emerald-600 data-[state=active]:shadow-sm"
+      : "data-[state=active]:bg-gray-700/50 data-[state=active]:text-emerald-400 data-[state=active]:shadow-sm",
+    inputContainer: isLightMode
+      ? "bg-white border-gray-300 focus-within:border-emerald-500"
+      : "bg-gray-800 border-gray-700 focus-within:border-emerald-500",
+    addressCard: isLightMode ? "bg-gray-50 border-gray-200" : "bg-gray-800/50 border-gray-700/50",
+    successBox: isLightMode ? "bg-green-50 border-green-200" : "bg-green-900/20 border-green-700",
+    warningBox: isLightMode ? "bg-orange-50 border-orange-200" : "bg-orange-900/20 border-orange-700",
+    infoBox: isLightMode ? "bg-blue-50 border-blue-200" : "bg-blue-900/20 border-blue-700",
+  }
 
   // Memoized fetch function to prevent unnecessary calls
   const memoizedFetchAddresses = useCallback(async () => {
@@ -238,39 +260,41 @@ export default function Settings() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="container max-w-6xl mx-auto py-10"
+      transition={{ duration: 0.5 }}
+      className="max-w-6xl mx-auto space-y-6"
     >
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Account Settings</h1>
-        <p className="text-muted-foreground mt-2">Manage your account preferences and personal information</p>
+      <div>
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Account Settings</h1>
+        <p className="text-gray-600 dark:text-gray-400 mt-1">
+          Manage your account preferences and personal information
+        </p>
       </div>
 
       <Tabs defaultValue="profile" className="space-y-6">
-        <div className="flex flex-col sm:flex-row gap-6">
-          <div className="sm:w-64 shrink-0">
-            <Card>
+        <div className="flex flex-col lg:flex-row gap-6">
+          <div className="lg:w-64 shrink-0">
+            <Card className={`py-0 ${styles.cardContainer} lg:sticky top-28`}>
               <CardContent className="p-0">
-                <TabsList className="flex flex-col w-full h-auto bg-transparent space-y-1 p-2">
+                <TabsList className={`flex flex-col w-full h-auto ${styles.tabsList} space-y-1 p-4`}>
                   <TabsTrigger
                     value="profile"
-                    className="w-full justify-start px-3 py-2.5 h-auto data-[state=active]:bg-primary/5 data-[state=active]:text-primary"
+                    className={`w-full justify-start px-3 py-2.5 h-auto ${styles.tabsTrigger}`}
                   >
                     <User className="h-4 w-4 mr-2" />
                     <span>Profile</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="payment"
-                    className="w-full justify-start px-3 py-2.5 h-auto data-[state=active]:bg-primary/5 data-[state=active]:text-primary"
+                    className={`w-full justify-start px-3 py-2.5 h-auto ${styles.tabsTrigger}`}
                   >
                     <CreditCard className="h-4 w-4 mr-2" />
                     <span>Payment</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="security"
-                    className="w-full justify-start px-3 py-2.5 h-auto data-[state=active]:bg-primary/5 data-[state=active]:text-primary"
+                    className={`w-full justify-start px-3 py-2.5 h-auto ${styles.tabsTrigger}`}
                   >
                     <Lock className="h-4 w-4 mr-2" />
                     <span>Security</span>
@@ -282,10 +306,12 @@ export default function Settings() {
 
           <div className="flex-1">
             <TabsContent value="profile" className="m-0">
-              <Card>
+              <Card className={styles.cardContainer}>
                 <CardHeader className="px-4">
-                  <CardTitle>Personal Information</CardTitle>
-                  <CardDescription>Update your profile details and personal information</CardDescription>
+                  <CardTitle className="text-gray-800 dark:text-white">Personal Information</CardTitle>
+                  <CardDescription className="text-gray-600 dark:text-gray-400">
+                    Update your profile details and personal information
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 px-4">
                   <div className="flex items-center gap-4">
@@ -293,20 +319,20 @@ export default function Settings() {
                       <AvatarFallback className="bg-emerald-600 text-white text-xl">{getInitials()}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="font-medium">{fullName}</p>
-                      <p className="text-sm text-muted-foreground">{user?.email}</p>
+                      <p className="font-medium text-gray-800 dark:text-white">{fullName}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{user?.email}</p>
                     </div>
                   </div>
 
-                  <Separator />
+                  <Separator className="border-gray-300 dark:border-gray-700" />
 
                   <div className="grid gap-6 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="firstName" className="text-sm">
+                      <Label htmlFor="firstName" className="text-sm text-gray-700 dark:text-gray-300">
                         First Name
                       </Label>
                       <div className="relative">
-                        <User className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                        <User className="absolute left-3 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                         <Input
                           id="firstName"
                           name="firstName"
@@ -317,11 +343,11 @@ export default function Settings() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="lastName" className="text-sm">
+                      <Label htmlFor="lastName" className="text-sm text-gray-700 dark:text-gray-300">
                         Last Name
                       </Label>
                       <div className="relative">
-                        <User className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                        <User className="absolute left-3 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                         <Input
                           id="lastName"
                           name="lastName"
@@ -332,11 +358,11 @@ export default function Settings() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm">
+                      <Label htmlFor="email" className="text-sm text-gray-700 dark:text-gray-300">
                         Email Address
                       </Label>
                       <div className="relative">
-                        <Mail className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                        <Mail className="absolute left-3 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                         <Input
                           id="email"
                           name="email"
@@ -347,14 +373,14 @@ export default function Settings() {
                           disabled
                         />
                       </div>
-                      <p className="text-xs text-muted-foreground">Email cannot be changed</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Email cannot be changed</p>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-sm">
+                      <Label htmlFor="phone" className="text-sm text-gray-700 dark:text-gray-300">
                         Phone Number
                       </Label>
                       <div className="relative">
-                        <Smartphone className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                        <Smartphone className="absolute left-3 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                         <Input
                           id="phone"
                           name="phone"
@@ -366,12 +392,12 @@ export default function Settings() {
                     </div>
                   </div>
 
-                  <Separator />
+                  <Separator className="border-gray-300 dark:border-gray-700" />
 
                   <div className="space-y-4">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-medium flex items-center">
+                        <h3 className="text-lg font-medium flex items-center text-gray-800 dark:text-white">
                           <Home className="h-5 w-5 mr-2" />
                           Addresses
                         </h3>
@@ -399,83 +425,111 @@ export default function Settings() {
                         </div>
                       </div>
                       {hasUnsavedChanges && (
-                        <div className="flex items-center gap-2 p-3 bg-orange-50 border border-orange-200 rounded-lg">
-                          <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                          <span className="text-sm text-orange-700 font-medium">You have unsaved address changes</span>
-                          <span className="text-xs text-orange-600">Click "Save Addresses" to save your changes</span>
-                        </div>
+                        <Card className={`${styles.warningBox} border`}>
+                          <CardContent className="p-3">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                              <span className="text-sm text-orange-700 dark:text-orange-300 font-medium">
+                                You have unsaved address changes
+                              </span>
+                              <span className="text-xs text-orange-600 dark:text-orange-400">
+                                Click "Save Addresses" to save your changes
+                              </span>
+                            </div>
+                          </CardContent>
+                        </Card>
                       )}
                     </div>
                     {localAddresses.length === 0 ? (
-                      <div className="text-center py-6 border rounded-lg bg-muted/20">
-                        <p className="text-muted-foreground">No addresses added yet</p>
-                        <Button variant="link" onClick={handleAddAddress} className="mt-2">
-                          <Plus className="h-4 w-4 mr-1" />
-                          Add your first address
-                        </Button>
-                      </div>
+                      <Card className={styles.cardContainer}>
+                        <CardContent className="p-6 text-center">
+                          <p className="text-gray-600 dark:text-gray-400">No addresses added yet</p>
+                          <Button variant="link" onClick={handleAddAddress} className="mt-2 text-emerald-600">
+                            <Plus className="h-4 w-4 mr-1" />
+                            Add your first address
+                          </Button>
+                        </CardContent>
+                      </Card>
                     ) : (
                       localAddresses.map((address) => (
-                        <Card key={address.id || address._id} className="p-4 relative">
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="absolute top-2 right-2 h-8 w-8 text-muted-foreground hover:text-destructive"
-                            onClick={() => handleRemoveAddress(address.id || address._id)}
-                          >
-                            <Trash2 className="h-4 w-4" />
-                            <span className="sr-only">Remove address</span>
-                          </Button>
-                          <div className="grid gap-4 sm:grid-cols-2">
-                            <div className="space-y-2">
-                              <Label htmlFor={`address-street-${address.id || address._id}`} className="text-xs">
-                                Street Address
-                              </Label>
-                              <Input
-                                id={`address-street-${address.id || address._id}`}
-                                value={address.street || ""}
-                                onChange={(e) =>
-                                  handleAddressChange(address.id || address._id, "street", e.target.value)
-                                }
-                                placeholder="Street address"
-                              />
+                        <Card key={address.id || address._id} className={`${styles.addressCard} relative`}>
+                          <CardContent className="p-4">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="absolute top-2 right-2 h-8 w-8 text-gray-500 hover:text-red-500"
+                              onClick={() => handleRemoveAddress(address.id || address._id)}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                              <span className="sr-only">Remove address</span>
+                            </Button>
+                            <div className="grid gap-4 sm:grid-cols-2">
+                              <div className="space-y-2">
+                                <Label
+                                  htmlFor={`address-street-${address.id || address._id}`}
+                                  className="text-xs text-gray-700 dark:text-gray-300"
+                                >
+                                  Street Address
+                                </Label>
+                                <Input
+                                  id={`address-street-${address.id || address._id}`}
+                                  value={address.street || ""}
+                                  onChange={(e) =>
+                                    handleAddressChange(address.id || address._id, "street", e.target.value)
+                                  }
+                                  placeholder="Street address"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label
+                                  htmlFor={`address-city-${address.id || address._id}`}
+                                  className="text-xs text-gray-700 dark:text-gray-300"
+                                >
+                                  City
+                                </Label>
+                                <Input
+                                  id={`address-city-${address.id || address._id}`}
+                                  value={address.city || ""}
+                                  onChange={(e) =>
+                                    handleAddressChange(address.id || address._id, "city", e.target.value)
+                                  }
+                                  placeholder="City"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label
+                                  htmlFor={`address-lga-${address.id || address._id}`}
+                                  className="text-xs text-gray-700 dark:text-gray-300"
+                                >
+                                  LGA
+                                </Label>
+                                <Input
+                                  id={`address-lga-${address.id || address._id}`}
+                                  value={address.LGA || ""}
+                                  onChange={(e) =>
+                                    handleAddressChange(address.id || address._id, "LGA", e.target.value)
+                                  }
+                                  placeholder="Local Government Area"
+                                />
+                              </div>
+                              <div className="space-y-2">
+                                <Label
+                                  htmlFor={`address-state-${address.id || address._id}`}
+                                  className="text-xs text-gray-700 dark:text-gray-300"
+                                >
+                                  State
+                                </Label>
+                                <Input
+                                  id={`address-state-${address.id || address._id}`}
+                                  value={address.state || ""}
+                                  onChange={(e) =>
+                                    handleAddressChange(address.id || address._id, "state", e.target.value)
+                                  }
+                                  placeholder="State"
+                                />
+                              </div>
                             </div>
-                            <div className="space-y-2">
-                              <Label htmlFor={`address-city-${address.id || address._id}`} className="text-xs">
-                                City
-                              </Label>
-                              <Input
-                                id={`address-city-${address.id || address._id}`}
-                                value={address.city || ""}
-                                onChange={(e) => handleAddressChange(address.id || address._id, "city", e.target.value)}
-                                placeholder="City"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor={`address-lga-${address.id || address._id}`} className="text-xs">
-                                LGA
-                              </Label>
-                              <Input
-                                id={`address-lga-${address.id || address._id}`}
-                                value={address.LGA || ""}
-                                onChange={(e) => handleAddressChange(address.id || address._id, "LGA", e.target.value)}
-                                placeholder="Local Government Area"
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor={`address-state-${address.id || address._id}`} className="text-xs">
-                                State
-                              </Label>
-                              <Input
-                                id={`address-state-${address.id || address._id}`}
-                                value={address.state || ""}
-                                onChange={(e) =>
-                                  handleAddressChange(address.id || address._id, "state", e.target.value)
-                                }
-                                placeholder="State"
-                              />
-                            </div>
-                          </div>
+                          </CardContent>
                         </Card>
                       ))
                     )}
@@ -502,89 +556,111 @@ export default function Settings() {
             </TabsContent>
 
             <TabsContent value="payment" className="m-0">
-              <Card>
+              <Card className={styles.cardContainer}>
                 <CardHeader>
-                  <CardTitle>Payment Method</CardTitle>
-                  <CardDescription>Your payment is processed securely through Paystack</CardDescription>
+                  <CardTitle className="text-gray-800 dark:text-white">Payment Method</CardTitle>
+                  <CardDescription className="text-gray-600 dark:text-gray-400">
+                    Your payment is processed securely through Paystack
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="flex items-center justify-between p-4 rounded-lg border bg-gradient-to-r from-emerald-50 to-blue-50 border-emerald-200">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-full bg-emerald-100">
-                        <CreditCard className="h-6 w-6 text-emerald-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-emerald-900">Paystack</h3>
-                        <p className="text-sm text-emerald-700">Secure payment processing for all transactions</p>
-                        <div className="flex items-center gap-2 mt-2">
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                          <span className="text-xs text-emerald-600 font-medium">Active Payment Method</span>
+                  <Card className={`${styles.successBox} border`}>
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 rounded-full bg-emerald-100 dark:bg-emerald-900/30">
+                            <CreditCard className="h-6 w-6 text-emerald-600" />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-100">Paystack</h3>
+                            <p className="text-sm text-emerald-700 dark:text-emerald-300">
+                              Secure payment processing for all transactions
+                            </p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                                Active Payment Method
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="flex items-center gap-1 text-emerald-600 mb-1">
+                            <Shield className="h-4 w-4" />
+                            <span className="text-sm font-medium">Secured</span>
+                          </div>
+                          <p className="text-xs text-emerald-600 dark:text-emerald-400">256-bit SSL encryption</p>
                         </div>
                       </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="flex items-center gap-1 text-emerald-600 mb-1">
-                        <Shield className="h-4 w-4" />
-                        <span className="text-sm font-medium">Secured</span>
-                      </div>
-                      <p className="text-xs text-emerald-600">256-bit SSL encryption</p>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
 
                   <div className="space-y-4">
-                    <h4 className="font-medium">Supported Payment Options</h4>
+                    <h4 className="font-medium text-gray-800 dark:text-white">Supported Payment Options</h4>
                     <div className="grid gap-3 sm:grid-cols-2">
-                      <div className="flex items-center gap-3 p-3 rounded-lg border bg-muted/20">
-                        <CreditCard className="h-5 w-5 text-muted-foreground" />
-                        <span className="text-sm">Credit & Debit Cards</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 rounded-lg border bg-muted/20">
-                        <Smartphone className="h-5 w-5 text-muted-foreground" />
-                        <span className="text-sm">Mobile Money</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 rounded-lg border bg-muted/20">
-                        <CreditCard className="h-5 w-5 text-muted-foreground" />
-                        <span className="text-sm">Bank Transfer</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 rounded-lg border bg-muted/20">
-                        <CreditCard className="h-5 w-5 text-muted-foreground" />
-                        <span className="text-sm">USSD</span>
-                      </div>
+                      <Card className={styles.cardContainer}>
+                        <CardContent className="p-3 flex items-center gap-3">
+                          <CreditCard className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                          <span className="text-sm">Credit & Debit Cards</span>
+                        </CardContent>
+                      </Card>
+                      <Card className={styles.cardContainer}>
+                        <CardContent className="p-3 flex items-center gap-3">
+                          <Smartphone className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                          <span className="text-sm">Mobile Money</span>
+                        </CardContent>
+                      </Card>
+                      <Card className={styles.cardContainer}>
+                        <CardContent className="p-3 flex items-center gap-3">
+                          <CreditCard className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                          <span className="text-sm">Bank Transfer</span>
+                        </CardContent>
+                      </Card>
+                      <Card className={styles.cardContainer}>
+                        <CardContent className="p-3 flex items-center gap-3">
+                          <CreditCard className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                          <span className="text-sm">USSD</span>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
-                    <div className="flex items-start gap-3">
-                      <Shield className="h-5 w-5 text-blue-600 mt-0.5" />
-                      <div>
-                        <h4 className="font-medium text-blue-900 mb-1">Secure & Reliable</h4>
-                        <p className="text-sm text-blue-700">
-                          All payments are processed through Paystack's secure infrastructure with industry-standard
-                          encryption and fraud protection.
-                        </p>
+                  <Card className={`${styles.infoBox} border`}>
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <Shield className="h-5 w-5 text-blue-600 mt-0.5" />
+                        <div>
+                          <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-1">Secure & Reliable</h4>
+                          <p className="text-sm text-blue-700 dark:text-blue-300">
+                            All payments are processed through Paystack's secure infrastructure with industry-standard
+                            encryption and fraud protection.
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
                 </CardContent>
               </Card>
             </TabsContent>
 
             <TabsContent value="security" className="m-0">
-              <Card>
+              <Card className={styles.cardContainer}>
                 <CardHeader>
-                  <CardTitle>Security Settings</CardTitle>
-                  <CardDescription>Manage your password and account security preferences</CardDescription>
+                  <CardTitle className="text-gray-800 dark:text-white">Security Settings</CardTitle>
+                  <CardDescription className="text-gray-600 dark:text-gray-400">
+                    Manage your password and account security preferences
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium">Change Password</h3>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">Change Password</h3>
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="currentPassword" className="text-sm">
+                        <Label htmlFor="currentPassword" className="text-sm text-gray-700 dark:text-gray-300">
                           Current Password
                         </Label>
                         <div className="relative">
-                          <Lock className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                          <Lock className="absolute left-3 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                           <Input
                             id="currentPassword"
                             name="currentPassword"
@@ -601,9 +677,9 @@ export default function Settings() {
                             onClick={() => setPasswordVisible(!passwordVisible)}
                           >
                             {passwordVisible ? (
-                              <EyeOff className="h-4 w-4 text-muted-foreground" />
+                              <EyeOff className="h-4 w-4 text-gray-500 dark:text-gray-400" />
                             ) : (
-                              <Eye className="h-4 w-4 text-muted-foreground" />
+                              <Eye className="h-4 w-4 text-gray-500 dark:text-gray-400" />
                             )}
                             <span className="sr-only">{passwordVisible ? "Hide password" : "Show password"}</span>
                           </Button>
@@ -611,7 +687,7 @@ export default function Settings() {
                       </div>
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div className="space-y-2">
-                          <Label htmlFor="newPassword" className="text-sm">
+                          <Label htmlFor="newPassword" className="text-sm text-gray-700 dark:text-gray-300">
                             New Password
                           </Label>
                           <Input
@@ -623,7 +699,7 @@ export default function Settings() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="confirmPassword" className="text-sm">
+                          <Label htmlFor="confirmPassword" className="text-sm text-gray-700 dark:text-gray-300">
                             Confirm Password
                           </Label>
                           <Input
@@ -659,24 +735,30 @@ export default function Settings() {
                     </div>
                   </div>
 
-                  <Separator />
+                  <Separator className="border-gray-300 dark:border-gray-700" />
 
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium">Advanced Security</h3>
-                    <div className="flex items-center justify-between p-4 rounded-lg border bg-muted/40">
-                      <div className="flex items-start gap-3">
-                        <div className="mt-0.5 p-1.5 rounded-full bg-primary/10">
-                          <Shield className="h-5 w-5 text-primary" />
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white">Advanced Security</h3>
+                    <Card className={styles.cardContainer}>
+                      <CardContent className="p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-start gap-3">
+                            <div className="mt-0.5 p-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30">
+                              <Shield className="h-5 w-5 text-emerald-600" />
+                            </div>
+                            <div>
+                              <h4 className="text-base font-medium text-gray-800 dark:text-white">
+                                Two-Factor Authentication
+                              </h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                Add an extra layer of security to your account
+                              </p>
+                            </div>
+                          </div>
+                          <Switch id="2fa" />
                         </div>
-                        <div>
-                          <h4 className="text-base font-medium">Two-Factor Authentication</h4>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            Add an extra layer of security to your account
-                          </p>
-                        </div>
-                      </div>
-                      <Switch id="2fa" />
-                    </div>
+                      </CardContent>
+                    </Card>
                   </div>
                 </CardContent>
               </Card>

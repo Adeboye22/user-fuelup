@@ -139,7 +139,7 @@ class ApiService {
 
     try {
       const payload = JSON.parse(atob(token.split(".")[1]))
-      const expiryTime = payload.exp * 1000 // Convert to milliseconds
+      const expiryTime = payload.exp * 1000
       const currentTime = Date.now()
       const timeUntilExpiry = expiryTime - currentTime
 
