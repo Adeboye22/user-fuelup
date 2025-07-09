@@ -43,7 +43,7 @@ const ActionCard = ({ title, description, icon, primary = false, onClick }) => {
         primary
           ? "bg-emerald-600"
           : "bg-white dark:bg-gray-800/60 backdrop-blur-md border border-gray-200 dark:border-gray-700/50"
-      } rounded-xl p-6 shadow-md flex items-center justify-between cursor-pointer`}
+      } rounded-xl p-4 shadow-md flex items-center justify-between cursor-pointer`}
     >
       <div>
         <h3 className={`text-lg font-semibold mb-1 ${primary ? "text-white" : "text-gray-800 dark:text-white"}`}>

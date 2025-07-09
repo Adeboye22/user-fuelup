@@ -54,7 +54,7 @@ const FuelPrices = () => {
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 shadow-sm animate-pulse"
+              className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-4 border border-gray-200 dark:border-gray-700/50 shadow-sm animate-pulse"
             >
               <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-3"></div>
               <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
@@ -141,7 +141,7 @@ const FuelPriceCard = ({ type, price, color, unit }) => {
   const colorClasses = getColorClasses(color)
 
   return (
-    <div className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 shadow-sm">
+    <div className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-4 border border-gray-200 dark:border-gray-700/50 shadow-sm">
       <div className="flex justify-between items-center mb-3">
         <div className="flex items-center">
           <div className={`${colorClasses.bg} p-2 rounded-lg mr-3`}>

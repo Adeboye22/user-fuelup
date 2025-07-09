@@ -209,7 +209,7 @@ const SupportDashboard = () => {
           filteredTickets.map((ticket) => (
             <Card key={ticket.id} className={`${styles.ticketCard} transition-colors cursor-pointer`}>
               <Link to={`/dashboard/support/ticket/${ticket.id}`}>
-                <CardContent className="p-6">
+                <CardContent className="p-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
