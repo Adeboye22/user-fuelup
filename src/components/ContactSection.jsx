@@ -1,28 +1,45 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, PhoneCall, Linkedin } from "lucide-react"
 import { FaTiktok } from "react-icons/fa"
 
 const ContactSection = () => {
   return (
-    <section className="py-16 relative bg-gray-100 dark:bg-gray-900">
+    <motion.section
+      className="py-16 relative bg-gray-100 dark:bg-gray-900"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
       {/* Background with overlay */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <img
-          src="/assets/map.jpg"
-          className="w-full h-full object-cover"
-          alt="World map background"
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-gray-100/80 dark:bg-gray-900/80" />
+        <img src="/assets/map.jpg" className="w-full h-full object-cover" alt="World map background" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gray-200/60 dark:bg-gray-900/80" />
       </div>
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
           <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Get in Touch</h2>
           <div className="w-16 h-1 bg-green-500 mx-auto"></div>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col md:flex-row items-stretch justify-between gap-8">
           {/* Contact Card */}
-          <div className="flex-1 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border-b-4 border-green-500">
+          <motion.div
+            className="flex-1 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border-b-4 border-green-500"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             <div className="flex flex-col h-full">
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6">Contact Information</h3>
 
@@ -69,16 +86,22 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Social Media Card */}
-          <div className="flex-1 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border-b-4 border-green-500">
+          <motion.div
+            className="flex-1 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border-b-4 border-green-500"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             <div className="flex flex-col h-full">
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6">Connect With Us</h3>
               <div className="grid grid-cols-3 gap-4 flex-grow">
                 <a
                   href="#"
-                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Facebook"
                 >
                   <Facebook className="w-6 h-6" />
@@ -86,7 +109,7 @@ const ContactSection = () => {
 
                 <a
                   href="#"
-                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Twitter"
                 >
                   <Twitter className="w-6 h-6" />
@@ -94,7 +117,7 @@ const ContactSection = () => {
 
                 <a
                   href="#"
-                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
                   <Instagram className="w-6 h-6" />
@@ -102,7 +125,7 @@ const ContactSection = () => {
 
                 <a
                   href="#"
-                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
                   <Linkedin className="w-6 h-6" />
@@ -110,7 +133,7 @@ const ContactSection = () => {
 
                 <a
                   href="#"
-                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
                   <PhoneCall className="w-6 h-6" />
@@ -118,17 +141,17 @@ const ContactSection = () => {
 
                 <a
                   href="#"
-                  className="aspect-square bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
                   <FaTiktok className="w-6 h-6" />
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

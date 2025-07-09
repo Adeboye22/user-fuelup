@@ -120,7 +120,7 @@ const Home = () => {
         </motion.section>
       </div>
 
-      <div className="py-24 bg-gray-800/50">
+      <div className="py-24 bg-gray-200/60 dark:bg-gray-900/80">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-green-500 mb-12 text-center">What Our Customers Say</h2>
 
