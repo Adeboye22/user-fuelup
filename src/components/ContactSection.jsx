@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, PhoneCall, Linkedin } from "lucide-react"
-import { FaTiktok } from "react-icons/fa"
 
 const ContactSection = () => {
   return (
@@ -100,7 +99,8 @@ const ContactSection = () => {
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-6">Connect With Us</h3>
               <div className="grid grid-cols-3 gap-4 flex-grow">
                 <a
-                  href="#"
+                  href="https://web.facebook.com/fuelupnigeria"
+                  target="_blank"
                   className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Facebook"
                 >
@@ -108,7 +108,8 @@ const ContactSection = () => {
                 </a>
 
                 <a
-                  href="#"
+                  href="https://x.com/Fuelupnaija?t=9mfY2ijqSS8Qs5yAiej56g&s=09"
+                  target="_blank"
                   className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Twitter"
                 >
@@ -116,7 +117,8 @@ const ContactSection = () => {
                 </a>
 
                 <a
-                  href="#"
+                  href="https://www.instagram.com/fuelupnigeria?utm_source=qr&igsh=Zm05bnY3YWExYm1n "
+                  target="_blank"
                   className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
@@ -125,6 +127,7 @@ const ContactSection = () => {
 
                 <a
                   href="#"
+                  target="_blank"
                   className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
@@ -133,6 +136,7 @@ const ContactSection = () => {
 
                 <a
                   href="#"
+                  target="_blank"
                   className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
@@ -140,11 +144,12 @@ const ContactSection = () => {
                 </a>
 
                 <a
-                  href="#"
+                  href="mailto:info@fuelup.ng"
+                  target="_blank"
                   className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
                 >
-                  <FaTiktok className="w-6 h-6" />
+                  <Mail className="w-6 h-6" />
                 </a>
               </div>
             </div>
