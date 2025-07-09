@@ -2,6 +2,7 @@
 
 import DashboardHeader from "@/components/dashboard/DashboardHeader"
 import Sidebar from "@/components/dashboard/Sidebar"
+import SessionTimeoutWarning from "@/components/SessionTimeoutWarning"
 import { useState } from "react"
 import { Outlet } from "react-router-dom"
 
@@ -14,6 +15,7 @@ const DashboardLayout = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black text-gray-800 dark:text-white">
+      <SessionTimeoutWarning />
       <div className="flex">
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <div className="flex-1 md:ml-64">
