@@ -13,6 +13,7 @@ import SignIn from "./pages/auth/SignIn"
 import SignUp from "./pages/auth/SignUp"
 import OrderFuel from "./pages/dashboard/OrderFuel"
 import OrderHistory from "./pages/dashboard/OrderHistory"
+import DeliveryStatus from "./pages/dashboard/DeliveryStatus"
 import NotificationsPage from "./pages/dashboard/NotificationsPage"
 import Settings from "./pages/dashboard/Settings"
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage"
@@ -116,6 +117,8 @@ function App() {
               <Route index element={<DashboardHome />} />
               <Route path="order-fuel" element={<OrderFuel />} />
               <Route path="order-history" element={<OrderHistory />} />
+              <Route path="delivery-status" element={<DeliveryStatus />} />
+              <Route path="delivery-status/:orderId" element={<DeliveryStatus />} />
               <Route path="notifications" element={<NotificationsPage />} />
               <Route path="settings" element={<Settings />} />
 
