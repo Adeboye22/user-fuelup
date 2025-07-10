@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Truck, Clock, CheckCircle, AlertCircle } from "lucide-react"
+import { Truck, Clock, CheckCircle, AlertCircle, UserCheck, Timer } from "lucide-react"
 import { useNavigate } from "react-router-dom"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import useOrderStore from "@/stores/useOrderStore"
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { Button } from "../ui/button"
+import { Badge } from "../ui/badge"
+import useOrderStore from "../../stores/useOrderStore"
 
 const DeliveryStatusWidget = () => {
   const navigate = useNavigate()
@@ -29,7 +29,12 @@ const DeliveryStatusWidget = () => {
       case "delivered":
         return <CheckCircle className="w-4 h-4 text-green-600" />
       case "processing":
+      case "out_for_delivery":
         return <Truck className="w-4 h-4 text-blue-600" />
+      case "driver_accepted":
+        return <UserCheck className="w-4 h-4 text-green-600" />
+      case "driver_assigned":
+        return <Timer className="w-4 h-4 text-yellow-600" />
       case "initiated":
       case "paid":
         return <Clock className="w-4 h-4 text-yellow-600" />
@@ -43,9 +48,12 @@ const DeliveryStatusWidget = () => {
   const getStatusStyle = (status) => {
     switch (status) {
       case "delivered":
+      case "driver_accepted":
         return "bg-green-100 text-green-600 dark:bg-green-500/20 dark:text-green-400"
       case "processing":
+      case "out_for_delivery":
         return "bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400"
+      case "driver_assigned":
       case "initiated":
       case "paid":
         return "bg-yellow-100 text-yellow-600 dark:bg-yellow-500/20 dark:text-yellow-400"
@@ -60,7 +68,10 @@ const DeliveryStatusWidget = () => {
     const statusMap = {
       initiated: "Order Placed",
       paid: "Payment Confirmed",
+      driver_assigned: "Driver Assigned",
+      driver_accepted: "Driver Accepted",
       processing: "Being Prepared",
+      out_for_delivery: "Out for Delivery",
       delivered: "Delivered",
       cancelled: "Cancelled",
     }
@@ -138,6 +149,19 @@ const DeliveryStatusWidget = () => {
               </span>
               <span>{formatDate(order.createdAt)}</span>
             </div>
+            {/* Driver acceptance indicator */}
+            {order.status === "driver_assigned" && (
+              <div className="mt-2 flex items-center gap-1 text-xs text-yellow-600">
+                <Timer className="w-3 h-3 animate-pulse" />
+                <span>Awaiting driver acceptance</span>
+              </div>
+            )}
+            {order.status === "driver_accepted" && (
+              <div className="mt-2 flex items-center gap-1 text-xs text-green-600">
+                <UserCheck className="w-3 h-3" />
+                <span>Driver accepted</span>
+              </div>
+            )}
           </motion.div>
         ))}
       </CardContent>

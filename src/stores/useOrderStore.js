@@ -9,7 +9,7 @@ const useOrderStore = create((set, get) => ({
     currentPage: 1,
     totalPages: 1,
     totalCount: 0,
-    pageSize: 5,
+    pageSize: 20,
     hasNextPage: false,
     hasPreviousPage: false
   },

@@ -144,7 +144,7 @@ const ContactSection = () => {
                 </a>
 
                 <a
-                  href="mailto:info@fuelup.ng"
+                  href="mailfuelup@gmail.com"
                   target="_blank"
                   className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-green-500 dark:hover:bg-green-500 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white dark:hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                   aria-label="Follow us on Instagram"
