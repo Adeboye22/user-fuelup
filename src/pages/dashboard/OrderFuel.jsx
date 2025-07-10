@@ -556,8 +556,8 @@ const OrderFuel = () => {
                   </h2>
 
                   {productsLoading ? (
-                    <div className="flex justify-center py-8">
-                      <div className="animate-spin rounded-full h-12 w-12 border-4 border-emerald-500 border-t-transparent"></div>
+                    <div className="flex justify-center items-center py-12">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-800 dark:border-white"></div>
                     </div>
                   ) : (
                     <>

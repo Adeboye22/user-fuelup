@@ -21,7 +21,12 @@ const QuickActions = () => {
         onClick={() => navigate("order-fuel")}
       />
 
-      <ActionCard title="Track Order" description="Check delivery status" icon={<Truck size={24} />} />
+      <ActionCard
+        title="Track Order"
+        description="Check delivery status"
+        icon={<Truck size={24} />}
+        onClick={() => navigate("delivery-status")}
+      />
 
       <ActionCard
         title="Add Location"

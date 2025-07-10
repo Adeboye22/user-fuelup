@@ -7,6 +7,7 @@ import SavedLocations from "@/components/dashboard/SavedLocations"
 import QuickActions from "@/components/dashboard/QuickActions"
 import FuelPrices from "@/components/dashboard/FuelPrices"
 import RecentOrders from "@/components/dashboard/RecentOrders"
+import DeliveryStatusWidget from "@/components/dashboard/DeliveryStatusWidget"
 
 const DashboardHome = () => {
   const { user } = useAuthStore()
@@ -24,6 +25,7 @@ const DashboardHome = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <RecentOrders orders={orders} loading={loading} error={error} />
+        <DeliveryStatusWidget />
         <SavedLocations addresses={user?.addresses || []} />
       </div>
     </>
