@@ -110,7 +110,7 @@ const DeliveryStatusWidget = () => {
 
   return (
     <Card className="bg-white dark:bg-gray-800/60 backdrop-blur-md border border-gray-200 dark:border-gray-700/50">
-      <CardHeader>
+      <CardHeader className="px-4">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center">
             <Truck className="w-5 h-5 mr-2" />
@@ -126,7 +126,7 @@ const DeliveryStatusWidget = () => {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-3 px-4">
         {activeOrders.map((order) => (
           <motion.div
             key={order._id}

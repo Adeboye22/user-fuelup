@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Fuel } from "lucide-react"
 import apiService from "@/lib/api"
+import { Badge } from "../ui/badge"
 
 const FuelPrices = () => {
   const [products, setProducts] = useState([])
@@ -85,9 +86,9 @@ const FuelPrices = () => {
     >
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Current Fuel Prices</h2>
-        <span className="text-xs bg-gray-700 px-2 py-1 rounded-md text-gray-300">
+        <Badge className="text-xs bg-gray-600 dark:bg-gray-800 px-2 py-1 rounded-md text-gray-300">
           Updated: {new Date().toLocaleDateString()}
-        </span>
+        </Badge>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
