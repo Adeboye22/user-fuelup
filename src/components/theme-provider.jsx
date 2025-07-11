@@ -9,20 +9,17 @@ const initialState = {
 
 const ThemeProviderContext = createContext(initialState)
 
-export function ThemeProvider({
-  children,
-  defaultTheme = "dark", // Changed default from "system" to "dark"
-  storageKey = "vite-ui-theme",
-  ...props
-}) {
+export function ThemeProvider({ children, defaultTheme = "system", storageKey = "fuelup-driver-theme", ...props }) {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage first, then fall back to defaultTheme
-    const storedTheme = localStorage.getItem(storageKey)
-    return storedTheme || defaultTheme
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(storageKey) || defaultTheme
+    }
+    return defaultTheme
   })
 
   useEffect(() => {
     const root = window.document.documentElement
+
     root.classList.remove("light", "dark")
 
     if (theme === "system") {
@@ -36,9 +33,9 @@ export function ThemeProvider({
 
   const value = {
     theme,
-    setTheme: (newTheme) => {
-      localStorage.setItem(storageKey, newTheme)
-      setTheme(newTheme)
+    setTheme: (theme) => {
+      localStorage.setItem(storageKey, theme)
+      setTheme(theme)
     },
   }
 
@@ -51,8 +48,8 @@ export function ThemeProvider({
 
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext)
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider")
-  }
+
+  if (context === undefined) throw new Error("useTheme must be used within a ThemeProvider")
+
   return context
 }
