@@ -151,7 +151,7 @@ const FuelPriceCard = ({ type, price, color, unit, stationName }) => {
         </span>
       </div>
 
-      <div className="flex justify-between items-center mb-3 pr-16">
+      <div className="flex justify-between items-center my-3 pr-16">
         <div className="flex items-center">
           <div className={`${colorClasses.bg} p-2 rounded-lg mr-3`}>
             <Fuel className={colorClasses.text} size={20} />
