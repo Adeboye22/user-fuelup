@@ -16,6 +16,7 @@ import useAuthStore from "@/stores/useAuthStore"
 import useAddressStore from "@/stores/useAddressStore"
 import apiService from "@/lib/api"
 import { useTheme } from "@/components/theme-provider"
+import { ThemeToggleInline } from "@/components/theme-toggle-inline"
 
 export default function Settings() {
   const { theme } = useTheme()
@@ -286,11 +287,11 @@ export default function Settings() {
                     <span>Profile</span>
                   </TabsTrigger>
                   <TabsTrigger
-                    value="payment"
+                    value="theme"
                     className={`w-full justify-start px-3 py-2.5 h-auto ${styles.tabsTrigger}`}
                   >
                     <CreditCard className="h-4 w-4 mr-2" />
-                    <span>Payment</span>
+                    <span>Theme Settings</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="security"
@@ -555,90 +556,23 @@ export default function Settings() {
               </Card>
             </TabsContent>
 
-            <TabsContent value="payment" className="m-0">
+            <TabsContent value="theme" className="m-0">
+              {/* Theme Settings Card */}
               <Card className={styles.cardContainer}>
                 <CardHeader>
-                  <CardTitle className="text-gray-800 dark:text-white">Payment Method</CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-gray-400">
-                    Your payment is processed securely through Paystack
-                  </CardDescription>
+                  <CardTitle>Theme Settings</CardTitle>
+                  <CardDescription>Choose your preferred theme for the dashboard</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <Card className={`${styles.successBox} border`}>
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                          <div className="p-3 rounded-full bg-emerald-100 dark:bg-emerald-900/30">
-                            <CreditCard className="h-6 w-6 text-emerald-600" />
-                          </div>
-                          <div>
-                            <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-100">Paystack</h3>
-                            <p className="text-sm text-emerald-700 dark:text-emerald-300">
-                              Secure payment processing for all transactions
-                            </p>
-                            <div className="flex items-center gap-2 mt-2">
-                              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                              <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
-                                Active Payment Method
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="flex items-center gap-1 text-emerald-600 mb-1">
-                            <Shield className="h-4 w-4" />
-                            <span className="text-sm font-medium">Secured</span>
-                          </div>
-                          <p className="text-xs text-emerald-600 dark:text-emerald-400">256-bit SSL encryption</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <div className="space-y-4">
-                    <h4 className="font-medium text-gray-800 dark:text-white">Supported Payment Options</h4>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      <Card className={styles.cardContainer}>
-                        <CardContent className="p-3 flex items-center gap-3">
-                          <CreditCard className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                          <span className="text-sm">Credit & Debit Cards</span>
-                        </CardContent>
-                      </Card>
-                      <Card className={styles.cardContainer}>
-                        <CardContent className="p-3 flex items-center gap-3">
-                          <Smartphone className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                          <span className="text-sm">Mobile Money</span>
-                        </CardContent>
-                      </Card>
-                      <Card className={styles.cardContainer}>
-                        <CardContent className="p-3 flex items-center gap-3">
-                          <CreditCard className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                          <span className="text-sm">Bank Transfer</span>
-                        </CardContent>
-                      </Card>
-                      <Card className={styles.cardContainer}>
-                        <CardContent className="p-3 flex items-center gap-3">
-                          <CreditCard className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                          <span className="text-sm">USSD</span>
-                        </CardContent>
-                      </Card>
+                <CardContent>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">Appearance</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        Select your preferred theme or use system setting
+                      </p>
                     </div>
+                    <ThemeToggleInline />
                   </div>
-
-                  <Card className={`${styles.infoBox} border`}>
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <Shield className="h-5 w-5 text-blue-600 mt-0.5" />
-                        <div>
-                          <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-1">Secure & Reliable</h4>
-                          <p className="text-sm text-blue-700 dark:text-blue-300">
-                            All payments are processed through Paystack's secure infrastructure with industry-standard
-                            encryption and fraud protection.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
                 </CardContent>
               </Card>
             </TabsContent>
