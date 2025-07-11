@@ -143,7 +143,7 @@ const FuelPriceCard = ({ type, price, color, unit, stationName }) => {
     <div className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-4 border border-gray-200 dark:border-gray-700/50 shadow-sm relative">
       {/* Station Name Badge - Top Right */}
       <div className="absolute top-3 right-3 flex items-center gap-1.5">
-        <p className="text-xs text-gray-500">Filling Station:</p>
+        <p className="text-xs text-gray-500">Station:</p>
         <span
           className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded px-1 py-0.5"
         >
@@ -151,7 +151,7 @@ const FuelPriceCard = ({ type, price, color, unit, stationName }) => {
         </span>
       </div>
 
-      <div className="flex justify-between items-center my-3 pr-16">
+      <div className="flex justify-between items-center mb-3 pr-16">
         <div className="flex items-center">
           <div className={`${colorClasses.bg} p-2 rounded-lg mr-3`}>
             <Fuel className={colorClasses.text} size={20} />
