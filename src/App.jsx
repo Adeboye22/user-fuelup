@@ -107,7 +107,7 @@ function App() {
             <Route
               path="/dashboard"
               element={
-                <Suspense>
+                <Suspense fallback={<LoadingSpinner />}>
                   <ProtectedRoute>
                     <DashboardLayout />
                   </ProtectedRoute>

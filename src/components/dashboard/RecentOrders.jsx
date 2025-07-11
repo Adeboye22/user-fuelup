@@ -36,7 +36,7 @@ const RecentOrders = ({ orders, loading, error }) => {
       className="lg:col-span-2"
     >
       <Card className={`${styles.cardContainer}`}>
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
+        <CardHeader className="flex flex-row items-center justify-between px-4 pb-2">
           <CardTitle className="text-xl font-bold text-gray-800 dark:text-white">Recent Orders</CardTitle>
           <Link
             to="/dashboard/order-history"

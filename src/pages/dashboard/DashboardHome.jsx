@@ -18,8 +18,15 @@ const DashboardHome = () => {
     fetchOrders("/orders/user?page=1&limit=3")
   }, [fetchOrders])
 
+  // Get user's first name to display
+  const firstName = user?.name?.split(" ")[0] || user?.firstName || "Driver"
+
   return (
     <>
+      <div className="block md:hidden mb-4">
+        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Dashboard</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400">Welcome back, {firstName}</p>
+      </div>
       <QuickActions />
       <FuelPrices />
 
