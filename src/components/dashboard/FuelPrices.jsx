@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Fuel } from "lucide-react"
@@ -16,7 +15,6 @@ const FuelPrices = () => {
       try {
         setIsLoading(true)
         const response = await apiService.get("/products")
-
         if (response.status === "success") {
           setProducts(response.data)
         } else {
@@ -90,7 +88,6 @@ const FuelPrices = () => {
           Updated: {new Date().toLocaleDateString()}
         </Badge>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {products.length > 0 ? (
           products.map((product) => (
@@ -100,6 +97,7 @@ const FuelPrices = () => {
               price={formatPrice(product.unitPrice)}
               color={getProductColor(product.name)}
               unit={product.unitOfMeasure}
+              stationName={product.stationName || product.fillingStation || "Station"}
             />
           ))
         ) : (
@@ -113,7 +111,7 @@ const FuelPrices = () => {
 }
 
 // Fuel Price Card Component
-const FuelPriceCard = ({ type, price, color, unit }) => {
+const FuelPriceCard = ({ type, price, color, unit, stationName }) => {
   const getColorClasses = (color) => {
     switch (color) {
       case "red":
@@ -142,8 +140,18 @@ const FuelPriceCard = ({ type, price, color, unit }) => {
   const colorClasses = getColorClasses(color)
 
   return (
-    <div className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-4 border border-gray-200 dark:border-gray-700/50 shadow-sm">
-      <div className="flex justify-between items-center mb-3">
+    <div className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-4 border border-gray-200 dark:border-gray-700/50 shadow-sm relative">
+      {/* Station Name Badge - Top Right */}
+      <div className="absolute top-3 right-3 flex items-center gap-1.5">
+        <p className="text-xs text-gray-500">Filling Station:</p>
+        <span
+          className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded px-1 py-0.5"
+        >
+          Premium Motor Spirit
+        </span>
+      </div>
+
+      <div className="flex justify-between items-center mb-3 pr-16">
         <div className="flex items-center">
           <div className={`${colorClasses.bg} p-2 rounded-lg mr-3`}>
             <Fuel className={colorClasses.text} size={20} />
