@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import {
   Search,
@@ -45,6 +45,7 @@ const DeliveryStatus = () => {
   const [trackingHistory, setTrackingHistory] = useState([])
   const [estimatedDelivery, setEstimatedDelivery] = useState(null)
   const [driverInfo, setDriverInfo] = useState(null)
+  const sectionRef = useRef(null);
 
   // Initialize component
   useEffect(() => {
@@ -91,6 +92,8 @@ const DeliveryStatus = () => {
       toast.error("Order not found or you don't have permission to view it")
       setSelectedOrder(null)
     }
+
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   }
 
   // Generate tracking history with driver acceptance flow
@@ -360,8 +363,8 @@ const DeliveryStatus = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Delivery Status</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">Track your fuel delivery in real-time</p>
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">Delivery Status</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Track your fuel delivery in real-time</p>
         </div>
         <Button variant="outline" onClick={() => navigate("/dashboard")} className="bg-transparent">
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -434,7 +437,9 @@ const DeliveryStatus = () => {
           {selectedOrder ? (
             <div className="space-y-6">
               {/* Order Overview */}
-              <Card className="bg-white dark:bg-gray-800/40 backdrop-blur-md border border-gray-300 dark:border-gray-700/50 shadow-lg">
+              <Card
+                ref={sectionRef} 
+                className="bg-white dark:bg-gray-800/40 backdrop-blur-md border border-gray-300 dark:border-gray-700/50 shadow-lg">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
@@ -677,7 +682,7 @@ const DeliveryStatus = () => {
             </div>
           ) : (
             /* Empty State */
-            <Card className="bg-white dark:bg-gray-800/40 backdrop-blur-md border border-gray-300 dark:border-gray-700/50 shadow-lg">
+            <Card className="bg-white lg:sticky lg:top-32 dark:bg-gray-800/40 backdrop-blur-md border border-gray-300 dark:border-gray-700/50 shadow-lg">
               <CardContent className="text-center py-12">
                 <Truck className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-800 dark:text-white mb-2">No Order Selected</h3>
