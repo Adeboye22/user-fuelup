@@ -290,7 +290,7 @@ const OrderFuel = () => {
     progressBar: isLightMode ? "bg-gray-300" : "bg-gray-700",
     stepInactive: isLightMode ? "bg-gray-400 text-white" : "bg-gray-700 text-gray-300",
     stepText: isLightMode ? "text-gray-600" : "text-gray-400",
-    cardSelected: isLightMode ? "border-emerald-500 bg-emerald-50" : "border-emerald-500 bg-emerald-500/20",
+    cardSelected: isLightMode ? "border-emerald-500 bg-emerald-50" : "border-emerald-500 bg-emerald-500/10 ",
     cardUnselected: isLightMode
       ? "border-gray-300 bg-white hover:bg-gray-50"
       : "border-gray-700/50 bg-gray-800/50 hover:bg-gray-700/50",
@@ -568,11 +568,19 @@ const OrderFuel = () => {
                             <Card
                               key={product._id}
                               onClick={() => setSelectedProduct(product)}
-                              className={`cursor-pointer transition-all ${
+                              className={`cursor-pointer transition-all relative ${
                                 selectedProduct?._id === product._id ? styles.cardSelected : styles.cardUnselected
                               }`}
                             >
-                              <CardContent className="p-4">
+                              <CardContent className="px-4">
+                                {/* Refined Station Name Badge with subtle label - Top Right */}
+                                <div className="absolute top-2 right-2 z-10 hidden lg:block">
+                                  <Badge className="bg-yellow-100 text-yellow-700 dark:bg-yellow-800/30 dark:text-yellow-400 px-2.5 py-1 rounded-md text-xs font-medium flex items-center gap-1.5 shadow-sm">
+                                    <MapPin size={12} className="text-yellow-600 dark:text-yellow-400" />
+                                    <span className="text-gray-500 dark:text-gray-400 text-[0.7rem]">Petrol Station:</span>
+                                    <span className="font-semibold">NNPC</span>
+                                  </Badge>
+                                </div>
                                 <div className="flex items-center mb-2">
                                   <Fuel className="mr-2" />
                                   <span className="capitalize font-medium">{product.name}</span>
@@ -601,18 +609,12 @@ const OrderFuel = () => {
                           >
                             -10
                           </Button>
-                          <Input
-                            type="number"
-                            value={quantity}
-                            onChange={handleQuantityChange}
-                            className="rounded-none border-x-0 text-center w-32 font-medium"
-                            min="10"
-                            step="10"
-                          />
+                          <div className="rounded-none border-x-0 text-center w-32 font-medium py-1.5 border bg-transparent">{quantity}</div>
                           <Button
                             type="button"
                             variant="outline"
                             onClick={handleQuantityIncrease}
+                            disabled={quantity >= 40}
                             className="rounded-l-none bg-transparent px-4 py-2 text-lg font-semibold"
                           >
                             +10
