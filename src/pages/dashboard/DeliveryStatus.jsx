@@ -374,13 +374,13 @@ const DeliveryStatus = () => {
         <div className="lg:col-span-1 space-y-6">
           {/* Search Order */}
           <Card className="bg-white dark:bg-gray-800/40 backdrop-blur-md border border-gray-300 dark:border-gray-700/50 shadow-lg">
-            <CardHeader>
+            <CardHeader className="px-4">
               <CardTitle className="text-lg flex items-center">
                 <Search className="w-5 h-5 mr-2" />
                 Find Order
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 px-4">
               <div className="flex gap-2">
                 <Input
                   placeholder="Enter Order ID"
@@ -398,10 +398,10 @@ const DeliveryStatus = () => {
           {/* Active Orders */}
           {activeOrders.length > 0 && (
             <Card className="bg-white dark:bg-gray-800/40 backdrop-blur-md border border-gray-300 dark:border-gray-700/50 shadow-lg">
-              <CardHeader>
+              <CardHeader className="px-4">
                 <CardTitle className="text-lg">Active Orders</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-3 px-4">
                 {activeOrders.map((order) => (
                   <div
                     key={order._id}
