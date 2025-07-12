@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Fuel } from "lucide-react"
+import { Fuel, MapPin } from "lucide-react"
 import apiService from "@/lib/api"
 import { Badge } from "../ui/badge"
 
@@ -27,7 +27,6 @@ const FuelPrices = () => {
         setIsLoading(false)
       }
     }
-
     fetchProducts()
   }, [])
 
@@ -97,7 +96,7 @@ const FuelPrices = () => {
               price={formatPrice(product.unitPrice)}
               color={getProductColor(product.name)}
               unit={product.unitOfMeasure}
-              stationName={product.stationName || product.fillingStation || "Station"}
+              stationName={product.stationName || product.fillingStation || "NNPC"}
             />
           ))
         ) : (
@@ -141,17 +140,16 @@ const FuelPriceCard = ({ type, price, color, unit, stationName }) => {
 
   return (
     <div className="bg-white dark:bg-gray-800/60 backdrop-blur-md rounded-xl p-4 border border-gray-200 dark:border-gray-700/50 shadow-sm relative">
-      {/* Station Name Badge - Top Right */}
-      <div className="absolute top-3 right-3 flex items-center gap-1.5">
-        <p className="text-xs text-gray-500">Station:</p>
-        <span
-          className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded px-1 py-0.5"
-        >
-          Premium Motor Spirit
-        </span>
+      {/* Refined Station Name Badge with subtle label - Top Right */}
+      <div className="absolute top-2 right-2 z-10">
+        <Badge className="bg-yellow-100 text-yellow-700 dark:bg-yellow-800/30 dark:text-yellow-400 px-2.5 py-1 rounded-md text-xs font-medium flex items-center gap-1.5 shadow-sm">
+          <MapPin size={12} className="text-yellow-600 dark:text-yellow-400" />
+          <span className="text-gray-500 dark:text-gray-400 text-[0.7rem]">Petrol Station:</span>
+          <span className="font-semibold">{stationName}</span>
+        </Badge>
       </div>
 
-      <div className="flex justify-between items-center mb-3 pr-16">
+      <div className="flex justify-between items-center mb-3 pr-4">
         <div className="flex items-center">
           <div className={`${colorClasses.bg} p-2 rounded-lg mr-3`}>
             <Fuel className={colorClasses.text} size={20} />
