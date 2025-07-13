@@ -4,13 +4,6 @@ import { FaArrowRight } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact")
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
   return (
     <motion.div
       className="max-w-5xl mx-auto text-white text-center flex flex-col items-center"

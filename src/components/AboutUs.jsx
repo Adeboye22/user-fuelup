@@ -4,29 +4,31 @@ import { useTheme } from "./theme-provider"
 
 const AboutUs = () => {
   const { theme } = useTheme()
+
   const benefits = [
     {
       icon: "⏱️",
-      title: "Convenience and Time Savings",
+      title: "Time-Saving",
       description:
-        "Skip the hassle of waiting in line at gas stations. Fuel Up brings the fuel directly to your location, saving valuable time and effort.",
+        "Skip the queues and let us come to you. We save you time so you can focus on what matters.",
     },
     {
       icon: "💰",
-      title: "Cost Savings",
-      description: "Fuel Up is budget friendly as we care for our users. You don't have to break a bank.",
+      title: "Affordable Service",
+      description:
+        "You don’t need to spend more than necessary. Our delivery is cost-effective and fair.",
     },
     {
       icon: "📈",
-      title: "Improved Efficiency",
+      title: "Smarter Fuel Use",
       description:
-        "Businesses can streamline their operations by outsourcing fuel management. This frees up employee time and optimize their fuel consumption.",
+        "Businesses don’t have to worry about fueling logistics. We help simplify the process and improve planning.",
     },
     {
       icon: "🛡️",
-      title: "Safety and Reliability",
+      title: "Safe & Secure",
       description:
-        "Our trained professionals handle the transportation and delivery of fuel, ensuring safety and compliance with regulations.",
+        "Your safety comes first. Our team is trained, licensed, and committed to clean and careful delivery.",
     },
   ]
 
@@ -38,7 +40,7 @@ const AboutUs = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
     >
-      {/* Top Section with Overlapping Elements */}
+      {/* Top Section */}
       <motion.div
         className="relative max-w-7xl mx-auto px-4 mb-32"
         initial={{ opacity: 0, y: 30 }}
@@ -47,13 +49,13 @@ const AboutUs = () => {
         transition={{ delay: 0.2, duration: 0.6 }}
       >
         <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute left-1/4 top-0 w-64 h-64 bg-green-500/10 dark:bg-green-500/5 rounded-full mix-blend-multiply dark:mix-blend-overlay blur-3xl"></div>
-          <div className="absolute right-1/4 top-1/3 w-64 h-64 bg-blue-500/10 dark:bg-blue-500/5 rounded-full mix-blend-multiply dark:mix-blend-overlay blur-3xl"></div>
+          <div className="absolute left-1/4 top-0 w-64 h-64 bg-green-500/10 dark:bg-green-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute right-1/4 top-1/3 w-64 h-64 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative">
           <div className="flex flex-col md:flex-row items-center gap-16">
-            {/* Left Side: About Text */}
+            {/* Text Section */}
             <motion.div
               className="md:w-1/2 z-10"
               initial={{ opacity: 0, x: -50 }}
@@ -65,30 +67,28 @@ const AboutUs = () => {
                 <span className="text-emerald-500">About Us</span>
               </h2>
 
-              <div>
-                <p className="text-xl text-gray-800 dark:text-gray-200 mb-8 leading-relaxed">
-                  We are Nigeria's first fuel dispatch service. FuelUp is a reliable door-step fuel delivery service. We
-                  offer ease, comfort, and emergency fuel delivery for unexpected situations.
-                </p>
+              <p className="text-lg text-gray-800 dark:text-gray-200 mb-8 leading-relaxed">
+                FuelUp is Nigeria’s first doorstep fuel delivery service. We’re here to take the stress out of buying
+                fuel. No more long queues or emergency panic. Just tap, order, and relax while we bring fuel to you.
+              </p>
 
-                <div className="flex items-center space-x-4">
-                  <div className="h-14 w-14 rounded-full bg-green-500/20 dark:bg-green-500/10 flex items-center justify-center">
-                    <span className="text-green-400 text-2xl">01</span>
-                  </div>
-                  <p className="text-gray-800 dark:text-gray-200">Nigeria's first fuel dispatch service</p>
+              <div className="flex items-center space-x-4">
+                <div className="h-14 w-14 rounded-full bg-green-500/20 dark:bg-green-500/10 flex items-center justify-center">
+                  <span className="text-green-400 text-2xl">01</span>
                 </div>
-
-                <div className="mt-6 mb-8 w-full h-px bg-gradient-to-r from-green-500/50 via-blue-500/50 to-transparent dark:from-green-500/30 dark:via-blue-500/30"></div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="h-14 w-14 rounded-full bg-blue-500/20 dark:bg-blue-500/10 flex items-center justify-center">
-                    <span className="text-blue-400 text-2xl">02</span>
-                  </div>
-                  <p className="text-gray-800 dark:text-gray-200">Reliable door-step fuel delivery</p>
-                </div>
+                <p className="text-gray-800 dark:text-gray-200">Pioneering fuel dispatch in Nigeria</p>
               </div>
 
-              {/* Why Fuel Up Section - Horizontal Layout */}
+              <div className="mt-6 mb-8 w-full h-px bg-gradient-to-r from-green-500/50 via-blue-500/50 to-transparent dark:from-green-500/30 dark:via-blue-500/30"></div>
+
+              <div className="flex items-center space-x-4">
+                <div className="h-14 w-14 rounded-full bg-blue-500/20 dark:bg-blue-500/10 flex items-center justify-center">
+                  <span className="text-blue-400 text-2xl">02</span>
+                </div>
+                <p className="text-gray-800 dark:text-gray-200">Safe and dependable doorstep delivery</p>
+              </div>
+
+              {/* Why FuelUp */}
               <motion.div
                 className="relative overflow-hidden mt-24"
                 initial={{ opacity: 0, y: 30 }}
@@ -96,25 +96,20 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.6 }}
               >
-                <div className="flex flex-col">
-                  <div>
-                    <h2 className="text-4xl font-bold text-emerald-500 mb-6">Why Fuel Up?</h2>
-                    <div className="w-16 h-1 bg-green-400 rounded-full mb-6"></div>
-                  </div>
+                <h2 className="text-4xl font-bold text-emerald-500 mb-6">Why Fuel Up?</h2>
+                <div className="w-16 h-1 bg-green-400 rounded-full mb-6"></div>
 
-                  <div className="shadow hover:shadow-xl transition-all duration-500 transform cursor-pointer backdrop-blur-sm md:col-span-2 p-6 bg-gray-100 dark:bg-gray-800 rounded-2xl">
-                    <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed">
-                      FuelUp delivers fuel to your doorstep, anytime, anywhere. We provide comfort and keep power from
-                      going out. You can order online, schedule delivery, and power your home or business. We help keep
-                      big businesses (like schools, hotels, fancy restaurants, supermarkets, retail stores, etc) running
-                      through our bulk fuel delivery service.
-                    </p>
-                  </div>
+                <div className="shadow hover:shadow-xl transition-all duration-500 transform cursor-pointer backdrop-blur-sm md:col-span-2 p-6 bg-gray-100 dark:bg-gray-800 rounded-2xl">
+                  <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
+                    Whether it’s day or night, FuelUp delivers fuel when and where you need it. From topping up your
+                    generator at home to powering your business operations, we’re always just a click away. And yes, we’re
+                    preparing to serve bulk orders for schools, hotels, and big facilities too.
+                  </p>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right Side: App Image in 3D Mockup */}
+            {/* App Preview Image */}
             <motion.div
               className="md:w-1/2 relative"
               initial={{ opacity: 0, x: 50 }}
@@ -124,9 +119,7 @@ const AboutUs = () => {
             >
               <div className="relative w-full max-w-sm mx-auto perspective-1000">
                 <div className="relative transform-style-3d rotate-y-12 group">
-                  {/* Phone frame */}
                   <div className="relative bg-gray-900 rounded-[2rem] p-2 overflow-hidden shadow-2xl">
-                    {/* Phone screen */}
                     <div className="overflow-hidden rounded-[1.7rem]">
                       {theme === "light" ? (
                         <img
@@ -144,7 +137,6 @@ const AboutUs = () => {
                     </div>
                   </div>
 
-                  {/* Floating elements */}
                   <div className="absolute -top-10 -right-8 bg-gray-800 dark:bg-gray-700 rounded-lg p-3 shadow-xl transform rotate-6 z-10">
                     <div className="flex items-center space-x-2">
                       <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white">
@@ -169,7 +161,7 @@ const AboutUs = () => {
         </div>
       </motion.div>
 
-      {/* Benefits Section - Horizontal Cards */}
+      {/* Benefits Section */}
       <motion.div
         className="px-4 mb-20 rounded-xl bg-gray-200/90 dark:bg-gray-900 py-24"
         initial={{ opacity: 0, y: 50 }}
@@ -186,11 +178,12 @@ const AboutUs = () => {
         >
           <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-green-500 mb-6">Benefits</h2>
           <p className="text-xl text-gray-800 dark:text-gray-200 max-w-3xl mx-auto">
-            Fuel Up offers a range of benefits to both businesses and individual consumers.
+            From saving your time to making life easier, FuelUp is built to serve both everyday users and growing
+            businesses.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -210,7 +203,7 @@ const AboutUs = () => {
         </div>
       </motion.div>
 
-      {/* Disclaimer - Minimal Design */}
+      {/* Disclaimer */}
       <motion.div
         className="max-w-4xl mx-auto px-4"
         initial={{ opacity: 0, y: 30 }}
@@ -237,8 +230,8 @@ const AboutUs = () => {
             <div>
               <h3 className="text-red-500 text-lg font-bold mb-2">Disclaimer Notice:</h3>
               <p className="text-gray-50">
-                We do not sell fuel (We are not fuel marketers). We only dispatch fuel based on our clients' orders from
-                the nearest filling station.
+                Please note: FuelUp does not sell or store fuel. We only dispatch fuel based on your order, sourcing
+                directly from verified nearby filling stations.
               </p>
             </div>
           </div>

@@ -194,8 +194,7 @@ const Navbar = () => {
                   </motion.div>
                   
                   <motion.div variants={navItemVariants}>
-                    <a 
-                      href="#services" 
+                    <button
                       onClick={scrollToServices}
                       className={`${scrolled ? 'text-gray-800 dark:text-gray-200' : 'text-white dark:text-gray-200'} 
                       hover:text-emerald-500 dark:hover:text-emerald-400 px-2 py-1 text-sm font-medium transition-all duration-300 relative
@@ -211,7 +210,7 @@ const Navbar = () => {
                           transition={{ duration: 0.3 }}
                         />
                       )}
-                    </a>
+                    </button>
                   </motion.div>
                 </motion.div>
                 
