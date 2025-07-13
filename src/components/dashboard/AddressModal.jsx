@@ -84,7 +84,7 @@ const AddressModal = ({ trigger, open, onOpenChange, onAddressSelect = null, sho
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md p-4">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <MapPin size={18} className="text-emerald-500" />
@@ -98,7 +98,7 @@ const AddressModal = ({ trigger, open, onOpenChange, onAddressSelect = null, sho
           </TabsList>
 
           <TabsContent value="saved" className="mt-4">
-            <ScrollArea className="h-72 pr-4">
+            <ScrollArea className="h-72">
               {addresses.length > 0 ? (
                 <div className="space-y-3">
                   {addresses.map((address) => (
