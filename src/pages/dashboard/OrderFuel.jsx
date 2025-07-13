@@ -111,6 +111,10 @@ const OrderFuel = () => {
   }
 
   const handleNext = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     // Validate current step before proceeding
     if (validateCurrentStep()) {
       setStep(step + 1)
@@ -230,6 +234,11 @@ const OrderFuel = () => {
       } else {
         throw new Error(orderResponse?.message || "Order creation failed. No order ID returned.")
       }
+
+      window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     } catch (err) {
       // Show detailed error message
       const errorMessage = error || err.message || "Failed to create order. Please try again."
