@@ -11,6 +11,7 @@ import { FaChevronDown } from "react-icons/fa"
 import { motion } from "framer-motion"
 import Locations from "@/components/Locations"
 import ContactSection from "@/components/ContactSection"
+import { useNavigate } from "react-router-dom"
 
 // Animation variants
 const fadeInUp = {
@@ -30,6 +31,43 @@ const Home = () => {
     window.scrollTo(0, 0)
   }, [])
 
+  const navigate = useNavigate();
+
+    // Function to scroll to services section
+    const scrollToServices = (e) => {
+      e.preventDefault();
+      
+      // If we're not on the home page, navigate there first
+      if (location.pathname !== '/') {
+        navigate('/', { state: { scrollToServices: true } });
+      } else {
+        // Add a small delay to ensure menu is closed before scrolling
+        setTimeout(() => {
+          // Scroll to services section
+          const servicesSection = document.getElementById('services');
+          if (servicesSection) {
+            servicesSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 50);
+      }
+    };
+  
+    useEffect(() => {
+      if (location.state?.scrollToServices) {
+        // Ensure the component is fully mounted and the section exists
+        setTimeout(() => {
+          const servicesSection = document.getElementById('services');
+          if (servicesSection) {
+            servicesSection.scrollIntoView({ behavior: 'smooth' });
+            // Highlight the services section in the nav
+            setIsServicesActive(true);
+          }
+          // Clean up state
+          navigate(location.pathname, { replace: true, state: {} });
+        }, 500);
+      }
+    }, [location.state, navigate]);
+
   return (
     <div className="text-gray-100 font-sans">
       {/* Hero Section with fullscreen height */}
@@ -46,10 +84,10 @@ const Home = () => {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 text-white">
-            <a href="#services" className="flex flex-col items-center">
+            <button onClick={scrollToServices} className="flex flex-col items-center">
               <span className="text-sm font-light mb-2">Scroll Down</span>
               <FaChevronDown className="text-green-500" />
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -59,7 +97,7 @@ const Home = () => {
         <div className="container mx-auto py-3">
           <Marquee speed={40} pauseOnHover={true} gradient={false} className="text-white">
             <p className="text-lg font-medium mx-4">
-              You don't have to compromise your comfort just to get fuel. You order from the nearest filling station, we
+              You don't have to compromise your comfort just to get fuel. You order, we
               deliver!
             </p>
             <span className="text-2xl mx-4 inline-block scale-x-[-1] text-emerald-600 rounded-full bg-emerald-800/10 p-4">
